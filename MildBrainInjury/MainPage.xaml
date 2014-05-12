@@ -8,7 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     d:DataContext="{d:DesignData SampleData/MainViewModelSampleData.xaml}"
-    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontFamily="/Assets/RleudCondensed-Bold.otf#Rleud Condensed"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait"  Orientation="Portrait"
@@ -44,14 +44,14 @@
                 <!--<phone:LongListSelector Margin="0,0,-12,0">
                     <phone:LongListSelector.ItemTemplate ItemSource="">
                         <DataTemplate>-->
-                            <StackPanel Margin="0,0,0,17">
-                    <TextBlock Text="REST" TextWrapping="Wrap" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                                <TextBlock Text="INFORM FRIENDS OR FAMILY" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                                <TextBlock Text="SIGNS &amp; SYMPTOMS" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                                <TextBlock Text="KNOW WHAT TO DO NEXT" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                                <TextBlock Text="SEEK MEDICAL ADVICE IF IN ANY DOUBT" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                            </StackPanel>
-                        <!--</DataTemplate>
+                <StackPanel Margin="0,7,0,10">
+                    <TextBlock Text="REST" TextWrapping="Wrap" Margin="12,-6,12,0" Name="txt1" VerticalAlignment="Bottom" />
+                    <TextBlock Text="INFORM FRIENDS OR FAMILY" TextWrapping="Wrap" Margin="12,-6,12,0" />
+                    <TextBlock Text="SIGNS &amp; SYMPTOMS" TextWrapping="Wrap" Margin="12,-6,12,0" />
+                    <TextBlock Text="KNOW WHAT TO DO NEXT" TextWrapping="Wrap" Margin="12,-6,12,0" />
+                    <TextBlock Text="SEEK MEDICAL ADVICE IF IN ANY DOUBT" TextWrapping="Wrap" Margin="12,-6,12,0" />
+                </StackPanel>
+                <!--</DataTemplate>
                     </phone:LongListSelector.ItemTemplate>
                 </phone:LongListSelector>-->
             </phone:PivotItem>
@@ -62,13 +62,43 @@
                 <!--<phone:LongListSelector Margin="0,0,-12,0">
                     <phone:LongListSelector.ItemTemplate>
                             <DataTemplate>-->
-                                <StackPanel Margin="0,0,0,17">
-                    <TextBlock Text="Do have plent of rest of avoid stressful situations. " TextWrapping="NoWrap" Margin="12,0,0,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                                    <TextBlock Text="DO inform a friend or family member who can keep an eye on your condition.  Show them this card." TextWrapping="NoWrap" Margin="12,-6,0,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                                </StackPanel>
-                            <!--</DataTemplate>
+                <StackPanel Margin="0,0,0,17">
+                    <TextBlock Text="DO have plenty of rest of avoid stressful situations. " TextWrapping="Wrap" Margin="12,0,0,0" />
+                    <TextBlock Text="DO inform a friend or family member who can keep an eye on your condition.  Show them this card." TextWrapping="Wrap" Margin="12,-6,0,0" Height="72" />
+                    <TextBlock Text="DO be aware of signs and symptoms" TextWrapping="Wrap" Margin="12,-6,0,0" />
+                    <TextBlock Text="DO stay within reach of a telephone and medical help in the next few days." TextWrapping="Wrap" Margin="12,-6,0,0" />
+                    <TextBlock Text="DO take painkillers such as paracetamol for headaches." TextWrapping="Wrap" Margin="12,-6,0,0" />
+                    <TextBlock Text="DON'T stay at home alone for 48 hours" TextWrapping="Wrap" Margin="12,12,0,0" />
+                    <TextBlock Text="DON'T drink alcohol until you feel better" TextWrapping="Wrap" Margin="12,-6,0,0" />
+                    <TextBlock Text="DON'T take aspirin or sleeping tablets without consulting a doctor." TextWrapping="Wrap" Margin="12,-6,0,0" />
+                    <TextBlock Text="DON'T return to work until you feel ready." TextWrapping="Wrap" Margin="12,-6,0,0" />
+                    <TextBlock Text="DON'T play any contact sport for at least three weeks without consulting your doctor." TextWrapping="Wrap" Margin="12,-6,0,0" />
+                    <TextBlock Text="DON'T return to driving until you feel you have recovered. If in doubt consult your doctor." TextWrapping="Wrap" Margin="12,-6,0,0" />
+                </StackPanel>
+                <!--</DataTemplate>
                     </phone:LongListSelector.ItemTemplate>
                 </phone:LongListSelector>-->
+            </phone:PivotItem>
+
+            <!--Pivot item three-->
+            <phone:PivotItem Header="Symptoms">
+                <StackPanel Margin="0,0,0,17">
+                    <TextBlock Text="WHILE MOST PEOPLE RECOVER QUICKLY YOU MAY EXPERIENCE SOME OF THE FOLLOWING SYMPTOMS OVER THE NEXT FEW DAYS AND WEEKS." TextWrapping="Wrap" Margin="12,0,0,0" />
+                    <TextBlock Text="Headaches" TextWrapping="NoWrap" Margin="12,0,0,0" />
+                    <TextBlock Text="Feelings of dizziness" TextWrapping="NoWrap" Margin="12,0,0,0" />
+                    <TextBlock Text="Nausea" TextWrapping="NoWrap" Margin="12,0,0,0" />
+                    <TextBlock Text="Sensitivity to light or noise" TextWrapping="NoWrap" Margin="12,0,0,0" />
+                    <TextBlock Text="Sleep disturbance" TextWrapping="NoWrap" Margin="12,0,0,0" />
+                    <TextBlock Text="Memory problems" TextWrapping="NoWrap" Margin="12,0,0,0" />
+                    <TextBlock Text="Irritability" TextWrapping="NoWrap" Margin="12,0,0,0" />
+                    <TextBlock Text="Restlessness" TextWrapping="NoWrap" Margin="12,0,0,0" />
+                    <TextBlock Text="Fatigue" TextWrapping="NoWrap" Margin="12,0,0,0" />
+                    <TextBlock Text="Impulsivity and self-control problems" TextWrapping="NoWrap" Margin="12,0,0,0" />
+                    <TextBlock Text="Difficulties with concentration" TextWrapping="NoWrap" Margin="12,0,0,0" />
+                    <TextBlock Text="Feeling depressed, tearful or anxious" TextWrapping="NoWrap" Margin="12,0,0,0" />
+                    <TextBlock Text="Difficulties thinking and problem-solving" TextWrapping="NoWrap" Margin="12,0,0,0" />
+                    <TextBlock Text="In most cases these symptoms will resolve themselves within two weeks." TextWrapping="Wrap" Margin="12,0,0,0" FontWeight="Bold" />
+                </StackPanel>
             </phone:PivotItem>
 
             <!--Pivot item three-->
@@ -77,14 +107,21 @@
                 <!--<phone:LongListSelector Margin="0,0,-12,0">
                     <phone:LongListSelector.ItemTemplate>
                         <DataTemplate> -->
-                            <StackPanel Margin="0,0,0,17">
-                                <TextBlock Text="Headaches" TextWrapping="NoWrap" Margin="12,0,0,0" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
-                                <TextBlock Text="Feelings of dizziness" TextWrapping="NoWrap" Margin="12,-6,0,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                            </StackPanel>
-                        <!-- </DataTemplate>
+                <StackPanel Margin="0,0,0,17">
+                    <TextBlock Text="OCCASIONALLY SOME SYMPTOMS MAY PERSIST FOR LONGER. IF IN ANY DOUBT CONTACT YOUR GP AS SOON AS POSSIBLE. THERE IS ALSO A SMALL RISK OF DEVELOPING COMPLICATIONS SO IF YOU EXPERIENCE ANY OF THE FOLLOWING SYMPTOMS GO TO YOUR LOCAL A&amp;E DEPARTMENT IMMEDIATELY. " TextWrapping="Wrap" Margin="12,0,0,0" />
+                    <TextBlock Text="Loss of consciousness and / or fits" TextWrapping="NoWrap" Margin="12,0,0,0" />
+                    <TextBlock Text="Bleeding from one or both ears" TextWrapping="NoWrap" Margin="12,0,0,0" />
+                    <TextBlock Text="Problems with vision, speech or hearing" TextWrapping="NoWrap" Margin="12,0,0,0" />
+                    <TextBlock Text="Increasing disorientation or loss of balance" TextWrapping="NoWrap" Margin="12,0,0,0" />
+                    <TextBlock Text="Drowsiness" TextWrapping="NoWrap" Margin="12,0,0,0" />
+                    <TextBlock Text="Clear fluid from ears and nose" TextWrapping="NoWrap" Margin="12,0,0,0" />
+                    <TextBlock Text="Any vomiting" TextWrapping="NoWrap" Margin="12,0,0,0" />
+                </StackPanel>
+                <!-- </DataTemplate>
                     </phone:LongListSelector.ItemTemplate>
                 </phone:LongListSelector> -->
             </phone:PivotItem>
+
         </phone:Pivot>
 
         <!--Uncomment to see an alignment grid to help ensure your controls are

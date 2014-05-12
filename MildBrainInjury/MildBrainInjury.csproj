@@ -121,6 +121,9 @@
     </DesignData>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\RleudCondensed-Bold.otf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml">
       <SubType>Designer</SubType>
