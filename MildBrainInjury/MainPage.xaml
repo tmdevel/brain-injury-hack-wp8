@@ -37,17 +37,27 @@
          -->
 
         <!--Pivot Control-->
-        <phone:Pivot Title="Mild Brain Injury" Background="#FFEC0020">
+        <phone:Pivot Title="Mild Brain Injury" Background="#FFE30613">
             <!--Pivot item one-->
-            <phone:PivotItem Header="Mild Brain Injury">
-                <StackPanel Margin="0,7,0,10">
-                    <TextBlock Text="REST" TextWrapping="Wrap" Margin="12,-6,12,0" Name="txt1" VerticalAlignment="Bottom" />
-                    <TextBlock Text="INFORM FRIENDS OR FAMILY" TextWrapping="Wrap" Margin="12,-6,12,0" />
-                    <TextBlock Text="SIGNS &amp; SYMPTOMS" TextWrapping="Wrap" Margin="12,-6,12,0" />
-                    <TextBlock Text="KNOW WHAT TO DO NEXT" TextWrapping="Wrap" Margin="12,-6,12,0" />
-                    <TextBlock Text="SEEK MEDICAL ADVICE IF IN ANY DOUBT" TextWrapping="Wrap" Margin="12,-6,12,0" />
-                </StackPanel>
-
+            <phone:PivotItem Header="Mild Brain Injury" Margin="12,10,12,0">
+                <!--Double line list with text wrapping-->
+                <!--<phone:LongListSelector Margin="0,0,-12,0">
+                    <phone:LongListSelector.ItemTemplate ItemSource="">
+                        <DataTemplate>-->
+                <Grid>
+                    <StackPanel>
+                        <TextBlock Text="KNOW THE" Foreground="#FF8E1816" FontWeight="Bold" FontSize="72" HorizontalAlignment="Left"></TextBlock>
+                        <TextBlock Text="R.I.S.K.S" FontWeight="Bold" FontSize="90" HorizontalAlignment="Left" Margin="0,-30,0,0"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Margin="0,7,0,10" Height="100" VerticalAlignment="Bottom">
+                        <TextBlock Text="REST" Foreground="#FF8E1816" TextWrapping="Wrap" Margin="12,-6,12,0" Name="txt1" VerticalAlignment="Bottom" />
+                        <TextBlock Text="INFORM FRIENDS OR FAMILY" Foreground="#FF8E1816" TextWrapping="Wrap" Margin="12,-6,12,0" VerticalAlignment="Bottom" />
+                        <TextBlock Text="SIGNS &amp; SYMPTOMS" Foreground="#FF8E1816" TextWrapping="Wrap" Margin="12,-6,12,0" />
+                        <TextBlock Text="KNOW WHAT TO DO NEXT" Foreground="#FF8E1816" TextWrapping="Wrap" Margin="12,-6,12,0" />
+                        <TextBlock Text="SEEK MEDICAL ADVICE IF IN ANY DOUBT" Foreground="#FF8E1816" TextWrapping="Wrap" Margin="12,-6,12,0" FontWeight="Bold" />
+                    </StackPanel>
+                    <Image HorizontalAlignment="Right" VerticalAlignment="Bottom" Source="/Assets/Mascot.png" Canvas.ZIndex="-1" Margin="0,0,-13,0" Height="400"/>
+                </Grid>
             </phone:PivotItem>
 
             <!--Pivot item two-->
@@ -75,7 +85,7 @@
             </phone:PivotItem>
 
             <!--Pivot item three-->
-            <phone:PivotItem Header="Symptoms">
+            <phone:PivotItem Header="Minor Symptoms">
                 <StackPanel Margin="0,0,0,17">
                     <TextBlock Text="WHILE MOST PEOPLE RECOVER QUICKLY YOU MAY EXPERIENCE SOME OF THE FOLLOWING SYMPTOMS OVER THE NEXT FEW DAYS AND WEEKS." TextWrapping="Wrap" Margin="12,0,0,0" />
                     <TextBlock Text="Headaches" TextWrapping="NoWrap" Margin="12,0,0,0" />
@@ -96,7 +106,7 @@
             </phone:PivotItem>
 
             <!--Pivot item three-->
-            <phone:PivotItem Header="Symptoms">
+            <phone:PivotItem Header="Major Symptoms">
                 <StackPanel Margin="0,0,0,17">
                     <TextBlock Text="OCCASIONALLY SOME SYMPTOMS MAY PERSIST FOR LONGER. IF IN ANY DOUBT CONTACT YOUR GP AS SOON AS POSSIBLE. THERE IS ALSO A SMALL RISK OF DEVELOPING COMPLICATIONS SO IF YOU EXPERIENCE ANY OF THE FOLLOWING SYMPTOMS GO TO YOUR LOCAL A&amp;E DEPARTMENT IMMEDIATELY. " TextWrapping="Wrap" Margin="12,0,0,0" />
                     <TextBlock Text="Loss of consciousness and / or fits" TextWrapping="NoWrap" Margin="12,0,0,0" />
