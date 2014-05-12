@@ -8,12 +8,15 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:maps="clr-namespace:Microsoft.Phone.Maps.Controls;assembly=Microsoft.Phone.Maps"
     mc:Ignorable="d"
+    d:DataContext="{d:DesignData SampleData/MainViewModelSampleData.xaml}"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait"  Orientation="Portrait"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     shell:SystemTray.IsVisible="True">
 
+<<<<<<< HEAD
   <phone:PhoneApplicationPage.Resources>
     <DataTemplate x:Key="AddrBookItemTemplate">
       <StackPanel VerticalAlignment="Top">
@@ -53,20 +56,49 @@
             <Border Background="{Binding Converter={StaticResource BackgroundConverter}}" Width="113" Height="113" Margin="6" >
               <TextBlock Text="{Binding Key}" FontFamily="{StaticResource PhoneFontFamilySemiBold}" FontSize="48" Padding="6" 
                Foreground="{Binding Converter={StaticResource ForegroundConverter}}" VerticalAlignment="Center"/>
+=======
+    <phone:PhoneApplicationPage.Resources>
+        <DataTemplate x:Key="AddrBookItemTemplate">
+            <StackPanel VerticalAlignment="Top">
+                <TextBlock FontWeight="Bold" Text="{Binding Name}" />
+                <TextBlock Text="{Binding Address}" />
+                <TextBlock Text="{Binding Phone}" />
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="AddrBookGroupHeaderTemplate">
+            <Border Background="Transparent" Padding="5">
+                <Border Background="{StaticResource PhoneAccentBrush}" BorderBrush="{StaticResource PhoneAccentBrush}" BorderThickness="2" Width="62" 
+         Height="62" Margin="0,0,18,0" HorizontalAlignment="Left">
+                    <TextBlock Text="{Binding Key}" Foreground="{StaticResource PhoneForegroundBrush}" FontSize="48" Padding="6" 
+            FontFamily="{StaticResource PhoneFontFamilySemiLight}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </Border>
+>>>>>>> d9f458b85c22884ee7dde7bef8748ccfb83252ee
             </Border>
-          </DataTemplate>
-        </Setter.Value>
-      </Setter>
-    </Style>
-  </phone:PhoneApplicationPage.Resources>
-  
-  <!--LayoutRoot is the root grid where all page content is placed-->
-  <Grid x:Name="LayoutRoot" Background="Transparent">
-    <!--Pivot Control-->
-    <phone:Pivot Title="Mild Brain Injury" Background="#FFEC0020" Loaded="Pivot_Loaded">
-      <!--Pivot item one-->
-      <phone:PivotItem Header="Services">
-        <phone:LongListSelector x:Name="ServicesList" 
+        </DataTemplate>
+        <phone:JumpListItemBackgroundConverter x:Key="BackgroundConverter"/>
+        <phone:JumpListItemForegroundConverter x:Key="ForegroundConverter"/>
+        <Style x:Key="AddrBookJumpListStyle" TargetType="phone:LongListSelector">
+            <Setter Property="GridCellSize"  Value="113,113"/>
+            <Setter Property="ItemTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <Border Background="{Binding Converter={StaticResource BackgroundConverter}}" Width="113" Height="113" Margin="6" >
+                            <TextBlock Text="{Binding Key}" FontFamily="{StaticResource PhoneFontFamilySemiBold}" FontSize="48" Padding="6" 
+               Foreground="{Binding Converter={StaticResource ForegroundConverter}}" VerticalAlignment="Center"/>
+                        </Border>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </phone:PhoneApplicationPage.Resources>
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <!--Pivot Control-->
+        <phone:Pivot Title="Mild Brain Injury" Background="#FFEC0020">
+            <!--Pivot item one-->
+            <phone:PivotItem Header="Services">
+                <phone:LongListSelector x:Name="ServicesList" 
                                 JumpListStyle="{StaticResource AddrBookJumpListStyle}"
                                 GroupHeaderTemplate="{StaticResource AddrBookGroupHeaderTemplate}"
                                 ItemTemplate="{StaticResource AddrBookItemTemplate}"
@@ -74,12 +106,21 @@
                                 IsGroupingEnabled="true"
                                 HideEmptyGroups ="true"
                                 />
+<<<<<<< HEAD
       </phone:PivotItem>
 
       <!--Pivot item two-->
       <phone:PivotItem Header="Map">
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,12,12,12">
           <maps:Map x:Name="ServicesMap"  />
+=======
+            </phone:PivotItem>
+
+            <!--Pivot item two-->
+            <phone:PivotItem Header="Map">
+                <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,12,12,12">
+                    <maps:Map x:Name="ServicesMap" Loaded="ServiceMap_Loaded" />
+>>>>>>> d9f458b85c22884ee7dde7bef8748ccfb83252ee
 
         </Grid>
       </phone:PivotItem>

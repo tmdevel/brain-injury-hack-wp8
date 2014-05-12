@@ -55,5 +55,12 @@ namespace MildBrainInjury
     private void ShowServices(object sender, EventArgs e) {
       NavigationService.Navigate(new Uri("/ServicesPage.xaml", UriKind.Relative));
     }
+
+    private void ShowWebsite(object sender, EventArgs eventArgs) {
+      var wbt = new Microsoft.Phone.Tasks.WebBrowserTask {
+        Uri = new Uri("http://www.hscboard.hscni.net/RABIIG")
+      };
+      wbt.Show();
+    }
   }
 }

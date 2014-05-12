@@ -12,6 +12,7 @@
       get;
       set;
     }
+<<<<<<< HEAD
     public string Category {
       get;
       set;
@@ -20,6 +21,12 @@
       get;
       set;
     }
+=======
+    public double Longitute {
+      get;
+      set;
+    }
+>>>>>>> d9f458b85c22884ee7dde7bef8748ccfb83252ee
     public double Latitute {
       get;
       set;

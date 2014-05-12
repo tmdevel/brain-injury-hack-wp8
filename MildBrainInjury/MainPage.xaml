@@ -263,6 +263,18 @@
                         <TextBlock Text="- Clear fluid from ears and nose" TextWrapping="NoWrap" Margin="12,0,0,0" />
                         <TextBlock Text="- Any vomiting" TextWrapping="NoWrap" Margin="12,0,0,0" />
                     </StackPanel>
+                    <StackPanel Height="130" Background="White" Margin="0,24,0,0">
+                        <TextBlock Text="For information on Brain Injury Services in Northern Ireland go to the links section of" Foreground="#FF8E1816" TextWrapping="Wrap" Margin="24,6,0,0"></TextBlock>
+                        <HyperlinkButton Click="ShowWebsite" Foreground="#FF8E1816" HorizontalAlignment="Left" Margin="12,-6,0,0">www.hscboard.hscni.net/RABIIG</HyperlinkButton>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="90"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" Source="Assets/HSClogo.png" HorizontalAlignment="Left" Width="60" Margin="24,6,0,0"/>
+                        <TextBlock Grid.Column="1" Text="Health and Social Carein Northern Ireland" Foreground="Black" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="0,6,0,0" Width="250" FontSize="18"></TextBlock>
+                        </Grid>
+                    </StackPanel>
                 </StackPanel>
             </phone:PivotItem>
 
@@ -278,8 +290,9 @@
     </Grid>
 
     <phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+        <shell:ApplicationBar Mode="Minimized" IsVisible="True" IsMenuEnabled="True">
             <shell:ApplicationBarIconButton IconUri="/Assets/feature.search.png" Text="Services" Click="ShowServices" />
+            <shell:ApplicationBarIconButton IconUri="/Assets/linkto.png" Text="Website" Click="ShowWebsite" />
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
 
