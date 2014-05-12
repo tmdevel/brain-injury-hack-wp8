@@ -54,11 +54,11 @@ namespace MildBrainInjury
       }
       DataContext = App.ViewModel;*/
       source = new List<SupportSevice>();
-      source.Add(new SupportSevice("Carers NI", "www.carersni.org", "02890439843", 54.597, 5.93));
-      source.Add(new SupportSevice("Child Brain Injury", "www.cbituk.org", "02890817145", 54.597, 5.93));
-      source.Add(new SupportSevice("Cedar", "www.cedar-foundatiom.org", "02890666188", 54.597, 5.93));
-      source.Add(new SupportSevice("Jigsaw", "www.jigsawni.org.uk", "02890319054", 54.597, 5.93));
-      source.Add(new SupportSevice("Praxis Care", "www.praxisprovides.com", "02890234555", 54.597, 5.93));
+      source.Add(new SupportSevice("Carers NI", "www.carersni.org", "02890439843", -0.092215, 51.499559));
+      source.Add(new SupportSevice("Child Brain Injury", "www.cbituk.org", "02890817145", -1.201954, 51.961212));
+      source.Add(new SupportSevice("Cedar", "www.cedar-foundatiom.org", "02890666188", -5.944646, 54.584680));
+      source.Add(new SupportSevice("Jigsaw", "www.jigsawni.org.uk", "02890319054", -5.940712, 54.601806));
+      source.Add(new SupportSevice("Praxis Care", "www.praxisprovides.com", "02890234555", -5.939479, 54.587831));
 
 
       List<AlphaKeyGroup<SupportSevice>> DataSource = AlphaKeyGroup<SupportSevice>.CreateGroups(source,
@@ -271,7 +271,7 @@ namespace MildBrainInjury
 
       MapOverlay locationPushPinOverlay = new MapOverlay();
       locationPushPinOverlay.Content = locationPushPin;
-      locationPushPinOverlay.PositionOrigin = new Point(0.5, 0.5);
+      locationPushPinOverlay.PositionOrigin = new Point(0, 1);
       locationPushPinOverlay.GeoCoordinate = new GeoCoordinate(currGeo.Latitude, currGeo.Longitude);
 
       MapLayer locationLayer = new MapLayer();
