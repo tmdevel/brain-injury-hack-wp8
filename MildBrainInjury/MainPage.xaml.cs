@@ -50,5 +50,8 @@ namespace MildBrainInjury
     //    ApplicationBarMenuItem appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarMenuItemText);
     //    ApplicationBar.MenuItems.Add(appBarMenuItem);
     //}
+    private void ShowServices(object sender, EventArgs e) {
+      NavigationService.Navigate(new Uri("/ServicesPage.xaml", UriKind.Relative));
+    }
   }
 }

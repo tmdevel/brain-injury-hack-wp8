@@ -121,6 +121,7 @@
     </DesignData>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\feature.search.png" />
     <Content Include="Assets\RleudCondensed-Bold.otf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
