@@ -137,6 +137,7 @@
     <Content Include="Assets\AppBar\zoomin.png" />
     <Content Include="Assets\AppBar\zoomout.png" />
     <Content Include="Assets\feature.search.png" />
+    <Content Include="Assets\HSClogo.png" />
     <Content Include="Assets\Mascot.png" />
     <Content Include="Assets\RleudCondensed-Bold.otf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
