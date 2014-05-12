@@ -139,6 +139,7 @@
     <Content Include="Assets\feature.search.png" />
     <Content Include="Assets\HSClogo.png" />
     <Content Include="Assets\Mascot.png" />
+    <Content Include="Assets\ApplicationIcon.png" />
     <Content Include="Assets\RleudCondensed-Bold.otf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -157,7 +158,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\AlignmentGrid.png" />
-    <Content Include="Assets\ApplicationIcon.png">
+    <Content Include="Assets\ApplicationIcon-.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\tick.png" />
