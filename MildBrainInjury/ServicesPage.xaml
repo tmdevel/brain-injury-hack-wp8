@@ -8,10 +8,12 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:maps="clr-namespace:Microsoft.Phone.Maps.Controls;assembly=Microsoft.Phone.Maps"
     mc:Ignorable="d"
+    d:DataContext="{d:DesignData SampleData/MainViewModelSampleData.xaml}"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait"  Orientation="Portrait"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
@@ -20,13 +22,22 @@
         <phone:Pivot Title="Mild Brain Injury" Background="#FFEC0020">
             <!--Pivot item one-->
             <phone:PivotItem Header="Services">
-                <Grid/>
+                <phone:LongListSelector Margin="0,0,-12,0" ItemsSource="{Binding Items}">
+                    <phone:LongListSelector.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="0,0,0,17">
+                                <TextBlock Text="{Binding LineOne}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                                <TextBlock Text="{Binding LineTwo}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </phone:LongListSelector.ItemTemplate>
+                </phone:LongListSelector>
             </phone:PivotItem>
 
             <!--Pivot item two-->
             <phone:PivotItem Header="Map">
                 <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,12,12,12">
-                    <maps:Map x:Name="ServicesMap"  />
+                    <maps:Map x:Name="ServicesMap" Loaded="ServiceMap_Loaded" />
 
                 </Grid>
             </phone:PivotItem>
