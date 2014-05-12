@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Device.Location;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -54,11 +55,11 @@ namespace MildBrainInjury
       }
       DataContext = App.ViewModel;*/
       source = new List<SupportSevice>();
-      source.Add(new SupportSevice("Carers NI", "www.carersni.org", "02890439843", -0.092215, 51.499559));
-      source.Add(new SupportSevice("Child Brain Injury", "www.cbituk.org", "02890817145", -1.201954, 51.961212));
-      source.Add(new SupportSevice("Cedar", "www.cedar-foundatiom.org", "02890666188", -5.944646, 54.584680));
-      source.Add(new SupportSevice("Jigsaw", "www.jigsawni.org.uk", "02890319054", -5.940712, 54.601806));
-      source.Add(new SupportSevice("Praxis Care", "www.praxisprovides.com", "02890234555", -5.939479, 54.587831));
+      source.Add(new SupportSevice("Carers NI", "http://www.carersni.org", "02890439843", -0.092215, 51.499559));
+      source.Add(new SupportSevice("Child Brain Injury", "http://www.cbituk.org", "02890817145", -1.201954, 51.961212));
+      source.Add(new SupportSevice("Cedar", "http://www.cedar-foundatiom.org", "02890666188", -5.944646, 54.584680));
+      source.Add(new SupportSevice("Jigsaw", "http://www.jigsawni.org.uk", "02890319054", -5.940712, 54.601806));
+      source.Add(new SupportSevice("Praxis Care", "http://www.praxisprovides.com", "02890234555", -5.939479, 54.587831));
 
 
       List<AlphaKeyGroup<SupportSevice>> DataSource = AlphaKeyGroup<SupportSevice>.CreateGroups(source,
@@ -282,6 +283,17 @@ namespace MildBrainInjury
 
     private void Pivot_Loaded(object sender, RoutedEventArgs e) {
        
+    }
+
+    private void NavigateToWebsite(object sender, RoutedEventArgs e) {
+      var button = sender as HyperlinkButton;
+
+      if (button == null) return;
+
+      var wbt = new Microsoft.Phone.Tasks.WebBrowserTask {
+        Uri = new Uri(button.NavigateUri.OriginalString)
+      };
+      wbt.Show();
     }
   }
 }
