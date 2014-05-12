@@ -12,11 +12,11 @@
       get;
       set;
     }
-    protected double Longitute {
+    public double Longitute {
       get;
       set;
     }
-    protected double Latitute {
+    public double Latitute {
       get;
       set;
     }

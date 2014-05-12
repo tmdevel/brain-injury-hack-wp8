@@ -2,12 +2,9 @@
 using System.Collections.Generic;
 using System.Device.Location;
 using System.Windows;
-<<<<<<< HEAD
 using System.Windows.Media;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-=======
->>>>>>> ef9b2206c3d623ecb90ae655fdf4fc045ce6d1a2
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Maps;
 using Microsoft.Phone.Maps.Toolkit;
@@ -31,9 +28,12 @@ namespace MildBrainInjury
    
     MapLayer locationLayer = null;
 
+    private List<SupportSevice> source;
+
     public ServicesPage() {
       InitializeComponent();
-<<<<<<< HEAD
+
+      SetupDataForServices();
 
       // Create the localized ApplicationBar.
       BuildLocalizedApplicationBar();
@@ -44,12 +44,7 @@ namespace MildBrainInjury
 
       //ShowMyLocationOnTheMap();
       GetLocation();
-      
-=======
-      ShowMyLocationOnTheMap();
-
-
-      SetupDataForServices();
+      ReadLocations();
     }
 
     private void SetupDataForServices() {
@@ -58,7 +53,7 @@ namespace MildBrainInjury
         App.ViewModel.LoadData();
       }
       DataContext = App.ViewModel;*/
-      List<SupportSevice> source = new List<SupportSevice>();
+      source = new List<SupportSevice>();
       source.Add(new SupportSevice("Carers NI", "www.carersni.org", "02890439843", 54.597, 5.93));
       source.Add(new SupportSevice("Child Brain Injury", "www.cbituk.org", "02890817145", 54.597, 5.93));
       source.Add(new SupportSevice("Cedar", "www.cedar-foundatiom.org", "02890666188", 54.597, 5.93));
@@ -74,7 +69,6 @@ namespace MildBrainInjury
 
       ServicesList.ItemsSource = DataSource;
 
->>>>>>> ef9b2206c3d623ecb90ae655fdf4fc045ce6d1a2
     }
 
     //private async void ShowMyLocationOnTheMap() {
@@ -265,9 +259,9 @@ namespace MildBrainInjury
 
 
     private void ReadLocations() {
-      //foreach (var location in Items) {
-      //  DrawLocationToMap(new GeoCoordinate(latitudeList, longitudeList));
-      //}
+      foreach (var s in source) {
+        DrawLocationToMap(new GeoCoordinate(s.Latitute, s.Longitute), s.Name);
+      }
     }
 
     private void DrawLocationToMap(GeoCoordinate currGeo, string currGeoTitle) {
