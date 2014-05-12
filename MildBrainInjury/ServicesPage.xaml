@@ -24,10 +24,22 @@
     </DataTemplate>
     <DataTemplate x:Key="AddrBookGroupHeaderTemplate">
       <Border Background="Transparent" Padding="5">
-        <Border Background="{StaticResource PhoneAccentBrush}" BorderBrush="{StaticResource PhoneAccentBrush}" BorderThickness="2" Width="62" 
+        <Border Background="{StaticResource PhoneAccentBrush}" BorderBrush="WhiteSmoke" BorderThickness="2" Width="202" 
          Height="62" Margin="0,0,18,0" HorizontalAlignment="Left">
-          <TextBlock Text="{Binding Key}" Foreground="{StaticResource PhoneForegroundBrush}" FontSize="48" Padding="6" 
-            FontFamily="{StaticResource PhoneFontFamilySemiLight}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Grid Background="White" Margin="0,0,0,0" HorizontalAlignment="Left" Width="202">
+              <TextBlock Text="{Binding CategoryFirst}" 
+                       FontSize="48" 
+                       HorizontalAlignment="Left" 
+                       Foreground="#FFE30613" 
+                       FontWeight="Bold" 
+                       Margin="5,2,0,-1" />
+              <TextBlock Text="{Binding CategoryRest}" 
+                         Foreground="#FF8E1816" 
+                         TextWrapping="Wrap" Margin="40,0,8,0" 
+                         Name="txt1" 
+                         VerticalAlignment="Bottom" 
+                         FontWeight="Bold" />
+            </Grid>
         </Border>
       </Border>
     </DataTemplate>
@@ -62,7 +74,6 @@
                                 IsGroupingEnabled="true"
                                 HideEmptyGroups ="true"
                                 />
-
       </phone:PivotItem>
 
       <!--Pivot item two-->

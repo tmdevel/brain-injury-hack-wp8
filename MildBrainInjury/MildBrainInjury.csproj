@@ -91,7 +91,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="SupportSevice.cs" />
-    <Compile Include="AlphaKeyGroup.cs" />
+    <Compile Include="CategorisedGroup.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>

@@ -12,21 +12,26 @@
       get;
       set;
     }
-    protected double Longitute {
+    public string Category {
       get;
       set;
     }
-    protected double Latitute {
+    public double Longitute {
+      get;
+      set;
+    }
+    public double Latitute {
       get;
       set;
     }
 
-    public SupportSevice(string name, string address, string phone, double longitute, double latitute) {
+    public SupportSevice(string name, string address, string phone, string category, double longitute, double latitute) {
       this.Name = name;
       this.Address = address;
       this.Phone = phone;
       this.Latitute = latitute;
       this.Longitute = longitute;
+      this.Category = category;
     }
   }
 }
