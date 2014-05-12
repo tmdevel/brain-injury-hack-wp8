@@ -129,6 +129,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\cross.png" />
     <Content Include="Assets\feature.search.png" />
     <Content Include="Assets\Mascot.png" />
     <Content Include="Assets\RleudCondensed-Bold.otf">
@@ -144,6 +145,7 @@
     <Content Include="Assets\ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\tick.png" />
     <Content Include="Assets\Tiles\FlipCycleTileLarge.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
