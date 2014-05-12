@@ -264,8 +264,8 @@
                         <TextBlock Text="- Any vomiting" TextWrapping="NoWrap" Margin="12,0,0,0" />
                     </StackPanel>
                     <StackPanel Height="130" Background="White" Margin="0,24,0,0">
-                        <TextBlock Text="For information on Brain Injury Services in Northern Ireland go to the links section of www.hscboard.hscni.net/RABIIG" Foreground="#FF8E1816" TextWrapping="Wrap" Margin="24,6,0,0"></TextBlock>
-                        
+                        <TextBlock Text="For information on Brain Injury Services in Northern Ireland go to the links section of" Foreground="#FF8E1816" TextWrapping="Wrap" Margin="24,6,0,0"></TextBlock>
+                        <HyperlinkButton Click="ShowWebsite" Foreground="#FF8E1816" HorizontalAlignment="Left" Margin="12,-6,0,0">www.hscboard.hscni.net/RABIIG</HyperlinkButton>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="90"></ColumnDefinition>
@@ -292,6 +292,7 @@
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar Mode="Minimized" IsVisible="True" IsMenuEnabled="True">
             <shell:ApplicationBarIconButton IconUri="/Assets/feature.search.png" Text="Services" Click="ShowServices" />
+            <shell:ApplicationBarIconButton IconUri="/Assets/linkto.png" Text="Website" Click="ShowWebsite" />
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
 

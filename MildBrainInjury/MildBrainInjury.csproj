@@ -138,6 +138,7 @@
     <Content Include="Assets\AppBar\zoomout.png" />
     <Content Include="Assets\feature.search.png" />
     <Content Include="Assets\HSClogo.png" />
+    <Content Include="Assets\linkto.png" />
     <Content Include="Assets\Mascot.png" />
     <Content Include="Assets\ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
