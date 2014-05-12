@@ -12,6 +12,10 @@
       get;
       set;
     }
+    public string Category {
+      get;
+      set;
+    }
     public double Longitute {
       get;
       set;
@@ -21,12 +25,13 @@
       set;
     }
 
-    public SupportSevice(string name, string address, string phone, double longitute, double latitute) {
+    public SupportSevice(string name, string address, string phone, string category, double longitute, double latitute) {
       this.Name = name;
       this.Address = address;
       this.Phone = phone;
       this.Latitute = latitute;
       this.Longitute = longitute;
+      this.Category = category;
     }
   }
 }

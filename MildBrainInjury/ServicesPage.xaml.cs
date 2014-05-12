@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using System.Device.Location;
 using System.Windows;
+<<<<<<< HEAD
 using System.Windows.Controls;
+=======
+using ViewModels;
+>>>>>>> 6f2887ef62c83af2161cdce364883eb79ac40315
 using System.Windows.Media;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -54,15 +58,24 @@ namespace MildBrainInjury
         App.ViewModel.LoadData();
       }
       DataContext = App.ViewModel;*/
+
       source = new List<SupportSevice>();
+<<<<<<< HEAD
       source.Add(new SupportSevice("Carers NI", "http://www.carersni.org", "02890439843", -0.092215, 51.499559));
       source.Add(new SupportSevice("Child Brain Injury", "http://www.cbituk.org", "02890817145", -1.201954, 51.961212));
       source.Add(new SupportSevice("Cedar", "http://www.cedar-foundatiom.org", "02890666188", -5.944646, 54.584680));
       source.Add(new SupportSevice("Jigsaw", "http://www.jigsawni.org.uk", "02890319054", -5.940712, 54.601806));
       source.Add(new SupportSevice("Praxis Care", "http://www.praxisprovides.com", "02890234555", -5.939479, 54.587831));
+=======
+      source.Add(new SupportSevice("Carers NI", "www.carersni.org", "02890439843", "Help", -0.092215, 51.499559));
+      source.Add(new SupportSevice("Child Brain Injury", "www.cbituk.org", "02890817145", "Aftercare", -1.201954, 51.961212));
+      source.Add(new SupportSevice("Cedar", "www.cedar-foundatiom.org", "02890666188", "Help", -5.944646, 54.584680));
+      source.Add(new SupportSevice("Jigsaw", "www.jigsawni.org.uk", "02890319054", "Aftercare", -5.940712, 54.601806));
+      source.Add(new SupportSevice("Praxis Care", "www.praxisprovides.com", "02890234555", "Help", -5.939479, 54.587831));
+>>>>>>> 6f2887ef62c83af2161cdce364883eb79ac40315
 
 
-      List<AlphaKeyGroup<SupportSevice>> DataSource = AlphaKeyGroup<SupportSevice>.CreateGroups(source,
+      List<CategorisedGroup<SupportSevice>> DataSource = CategorisedGroup<SupportSevice>.CreateGroups(source,
                                                                                             System.Threading.Thread
                                                                                                   .CurrentThread
                                                                                                   .CurrentUICulture,
