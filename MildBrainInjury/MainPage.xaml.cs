@@ -18,7 +18,9 @@ namespace MildBrainInjury
     public MainPage()
     {
       InitializeComponent();
-
+      if (!App.ViewModel.IsDataLoaded) {
+        App.ViewModel.LoadData();
+      }
       // Set the data context of the listbox control to the sample data
       DataContext = App.ViewModel;
 
