@@ -40,11 +40,6 @@
         <phone:Pivot Title="Mild Brain Injury" Background="#FFEC0020">
             <!--Pivot item one-->
             <phone:PivotItem Header="Mild Brain Injury">
-                <!--Double line list with text wrapping-->
-                <!--<phone:LongListSelector Margin="0,0,-12,0">
-                    <phone:LongListSelector.ItemTemplate ItemSource="">
-                        <DataTemplate>-->
-<<<<<<< HEAD
                 <StackPanel Margin="0,7,0,10">
                     <TextBlock Text="REST" TextWrapping="Wrap" Margin="12,-6,12,0" Name="txt1" VerticalAlignment="Bottom" />
                     <TextBlock Text="INFORM FRIENDS OR FAMILY" TextWrapping="Wrap" Margin="12,-6,12,0" />
@@ -52,19 +47,7 @@
                     <TextBlock Text="KNOW WHAT TO DO NEXT" TextWrapping="Wrap" Margin="12,-6,12,0" />
                     <TextBlock Text="SEEK MEDICAL ADVICE IF IN ANY DOUBT" TextWrapping="Wrap" Margin="12,-6,12,0" />
                 </StackPanel>
-                <!--</DataTemplate>
-=======
-                            <StackPanel Margin="0,0,0,17">
-                                <TextBlock Text="REST" TextWrapping="Wrap" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                                <TextBlock Text="INFORM FRIENDS OR FAMILY" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                                <TextBlock Text="SIGNS &amp; SYMPTOMS" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                                <TextBlock Text="KNOW WHAT TO DO NEXT" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                                <TextBlock Text="SEEK MEDICAL ADVICE IF IN ANY DOUBT" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                            </StackPanel>
-                        <!--</DataTemplate>
->>>>>>> f2dcaf0d471327705aafba5f22faa68ead0f8cf3
-                    </phone:LongListSelector.ItemTemplate>
-                </phone:LongListSelector>-->
+
             </phone:PivotItem>
 
             <!--Pivot item two-->
