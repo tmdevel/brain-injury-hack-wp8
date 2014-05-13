@@ -5,18 +5,15 @@ using System.Windows;
 using System.Windows.Controls;
 using ViewModels;
 using System.Windows.Media;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Maps;
-using Microsoft.Phone.Maps.Toolkit;
 using Microsoft.Phone.Shell;
 using MildBrainInjury.Resources;
 using Windows.Devices.Geolocation;
 using Microsoft.Phone.Maps.Controls;
 
-namespace MildBrainInjury
-{
+namespace MildBrainInjury {
   public partial class ServicesPage : PhoneApplicationPage {
 
     const int MIN_ZOOM_LEVEL = 1;
@@ -26,26 +23,27 @@ namespace MildBrainInjury
     ToggleStatus locationToggleStatus = ToggleStatus.ToggledOff;
     ToggleStatus landmarksToggleStatus = ToggleStatus.ToggledOff;
 
-    GeoCoordinate currentLocation = null;
+    private static Double niDefaultLatitude = 54.6077;
+    private static Double niDefaultLongitude = -005.9194;
+    private Double usDefaultLatitude = 47.669444;
+    private Double usDefaultLongitude = -122.123889;
+    GeoCoordinate currentLocation = new GeoCoordinate(niDefaultLatitude, niDefaultLongitude);
    
     MapLayer locationLayer = null;
 
     private List<SupportSevice> source;
+    public List<GeoCoordinate> MyCoordinates = new List<GeoCoordinate>();
 
     public ServicesPage() {
       InitializeComponent();
 
       SetupDataForServices();
 
-      // Create the localized ApplicationBar.
-      BuildLocalizedApplicationBar();
+      this.ServicesMap.Loaded += ServiceMapView_Loaded;
+    }
 
-      //ServicesMap.ZoomLevel = 15;
-      //ServicesMap.LandmarksEnabled = true;
-      //ServicesMap.PedestrianFeaturesEnabled = true;
+    private void ServiceMapView_Loaded(object sender, RoutedEventArgs e) {
 
-      //ShowMyLocationOnTheMap();
-      GetLocation();
       ReadLocations();
     }
 
@@ -73,31 +71,6 @@ namespace MildBrainInjury
 
     }
 
-    //private async void ShowMyLocationOnTheMap() {
-      // Get my current location.
-      //Geolocator myGeolocator = new Geolocator();
-      //Geoposition myGeoposition = await myGeolocator.GetGeopositionAsync();
-      //Geocoordinate myGeocoordinate = myGeoposition.Coordinate;
-      //GeoCoordinate myGeoCoordinate = CoordinateConverter.ConvertGeocoordinate(myGeocoordinate);
-
-      // Make my current location the center of the Map.
-      //ServicesMap.Center = myGeoCoordinate;
-      //ServicesMap.Center = new GeoCoordinate(54.6077, -005.9194);
-      //ServicesMap.ZoomLevel = 15;
-      //ServicesMap.LandmarksEnabled = true;
-      //ServicesMap.PedestrianFeaturesEnabled = true;
-    //}
-
-    // Load data for the ViewModel Items
-    protected override void OnNavigatedTo(NavigationEventArgs e)
-    {
-      if (!App.ViewModel.IsDataLoaded) {
-        App.ViewModel.LoadData();
-
-      }
-    }
-
-
     // Placeholder code to contain the ApplicationID and AuthenticationToken
     // that must be obtained online from the Windows Phone Dev Center
     // before publishing an app that uses the Map control.
@@ -108,10 +81,8 @@ namespace MildBrainInjury
 
     #region Event handlers for App Bar buttons and menu items
 
-    void ToggleLocation(object sender, EventArgs e)
-    {
-      switch (locationToggleStatus)
-      {
+    void ToggleLocation(object sender, EventArgs e) {
+      switch (locationToggleStatus) {
         case ToggleStatus.ToggledOff:
           ShowLocation();
           CenterMapOnLocation();
@@ -168,7 +139,7 @@ namespace MildBrainInjury
     private void ShowLocation() {
       // Create a small circle to mark the current location.
       Ellipse myCircle = new Ellipse();
-      myCircle.Fill = new SolidColorBrush(Colors.Blue);
+      myCircle.Fill = new SolidColorBrush(Color.FromArgb(225, 227, 6, 19));
       myCircle.Height = 20;
       myCircle.Width = 20;
       myCircle.Opacity = 50;
@@ -177,6 +148,7 @@ namespace MildBrainInjury
       MapOverlay myLocationOverlay = new MapOverlay();
       myLocationOverlay.Content = myCircle;
       myLocationOverlay.PositionOrigin = new Point(0.5, 0.5);
+      GetLocation();
       myLocationOverlay.GeoCoordinate = currentLocation;
 
       // Create a MapLayer to contain the MapOverlay.
@@ -190,25 +162,23 @@ namespace MildBrainInjury
 
     private async void GetLocation() {
       // Get current location.
-      //Geolocator myGeolocator = new Geolocator();
-      //Geoposition myGeoposition = await myGeolocator.GetGeopositionAsync();
-      //Geocoordinate myGeocoordinate = myGeoposition.Coordinate;
-      //currentLocation = CoordinateConverter.ConvertGeocoordinate(myGeocoordinate);
-      currentLocation = new GeoCoordinate(54.6077, -005.9194);
-      DrawLocationToMap(currentLocation, "current");
-      CenterMapOnLocation();
+      Geolocator myGeolocator = new Geolocator();
+      Geoposition myGeoposition = await myGeolocator.GetGeopositionAsync();
+      Geocoordinate myGeocoordinate = myGeoposition.Coordinate;
+      if (myGeocoordinate.Latitude.Equals(usDefaultLatitude) && myGeocoordinate.Longitude.Equals(usDefaultLongitude))
+        currentLocation = new GeoCoordinate(niDefaultLatitude, niDefaultLongitude);
+      else
+        currentLocation = CoordinateConverter.ConvertGeocoordinate(myGeocoordinate);
     }
 
-    private void CenterMapOnLocation()
-    {
+    private void CenterMapOnLocation() {
       ServicesMap.Center = currentLocation;
     }
 
     #endregion
 
     // Create the localized ApplicationBar.
-    private void BuildLocalizedApplicationBar()
-    {
+    private void BuildLocalizedApplicationBar() {
       // Set the page's ApplicationBar to a new instance of ApplicationBar.
       ApplicationBar = new ApplicationBar();
       ApplicationBar.Opacity = 0.5;
@@ -234,24 +204,6 @@ namespace MildBrainInjury
       appBarButton.Text = AppResources.AppBarZoomOutButtonText;
       appBarButton.Click += ZoomOut;
       ApplicationBar.Buttons.Add(appBarButton);
-
-      // Create menu items with localized strings from AppResources.
-      // Toggle Location menu item.
-      ApplicationBarMenuItem appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarToggleLocationMenuItemText);
-      appBarMenuItem.Click += ToggleLocation;
-      ApplicationBar.MenuItems.Add(appBarMenuItem);
-      // Toggle Landmarks menu item.
-      appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarToggleLandmarksMenuItemText);
-      appBarMenuItem.Click += ToggleLandmarks;
-      ApplicationBar.MenuItems.Add(appBarMenuItem);
-      // Zoom In menu item.
-      appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarZoomInMenuItemText);
-      appBarMenuItem.Click += ZoomIn;
-      ApplicationBar.MenuItems.Add(appBarMenuItem);
-      // Zoom Out menu item.
-      appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarZoomOutMenuItemText);
-      appBarMenuItem.Click += ZoomOut;
-      ApplicationBar.MenuItems.Add(appBarMenuItem);
     }
 
     private enum ToggleStatus {
@@ -261,29 +213,71 @@ namespace MildBrainInjury
 
 
     private void ReadLocations() {
-      foreach (var s in source) {
-        DrawLocationToMap(new GeoCoordinate(s.Latitute, s.Longitute), s.Name);
+      try {
+        ServicesMap.Layers.Clear();
+        MyCoordinates.Clear();
+        foreach (var s in source) {
+          MyCoordinates.Add(new GeoCoordinate { Latitude = double.Parse("" + s.Latitute), Longitude = double.Parse("" + s.Longitute) });
+        }
+
+        DrawMapMarkers();
+
+        ServicesMap.Center = MyCoordinates[MyCoordinates.Count - 1];
+
+        Dispatcher.BeginInvoke(() => {
+            ServicesMap.SetView(LocationRectangle.CreateBoundingRectangle(MyCoordinates));
+        });
+        ServicesMap.SetView(MyCoordinates[MyCoordinates.Count - 1], 10, MapAnimationKind.Linear);
+      }
+      catch
+      {
       }
     }
 
-    private void DrawLocationToMap(GeoCoordinate currGeo, string currGeoTitle) {
-      Pushpin locationPushPin = new Pushpin();
-      locationPushPin.Background = new SolidColorBrush(Colors.Black);
-      locationPushPin.Content = currGeoTitle;
+    private void DrawMapMarkers()
+    {
+      //MapVieMode.Layers.Clear();
+      MapLayer mapLayer = new MapLayer();
+      // Draw marker for current position       
 
-      MapOverlay locationPushPinOverlay = new MapOverlay();
-      locationPushPinOverlay.Content = locationPushPin;
-      locationPushPinOverlay.PositionOrigin = new Point(0, 1);
-      locationPushPinOverlay.GeoCoordinate = new GeoCoordinate(currGeo.Latitude, currGeo.Longitude);
-
-      MapLayer locationLayer = new MapLayer();
-      locationLayer.Add(locationPushPinOverlay);
-
-      ServicesMap.Layers.Add(locationLayer);
+      // Draw markers for location(s) / destination(s)
+      for (int i = 0; i < MyCoordinates.Count; i++) {
+        CustomToolTipUC _tooltip = new CustomToolTipUC();
+        _tooltip.Description = source[i].Name;// + "\n" + source[i].Address;
+        _tooltip.DataContext = source[i];
+        //_tooltip.Menuitem.Click += Menuitem_Click;
+        _tooltip.imgmarker.Tap += _tooltip_Tapimg;
+        MapOverlay overlay = new MapOverlay();
+        overlay.Content = _tooltip;
+        overlay.GeoCoordinate = MyCoordinates[i];
+        overlay.PositionOrigin = new Point(0.0, 1.0);
+        mapLayer.Add(overlay);
+      }
+      ServicesMap.Layers.Add(mapLayer);
     }
 
-    private void Pivot_Loaded(object sender, RoutedEventArgs e) {
-       
+    private void _tooltip_Tapimg(object sender, System.Windows.Input.GestureEventArgs e) {
+      try {
+        Image item = (Image)sender;
+        string selecteditem = item.Tag.ToString();
+        var selectedparkdata = source.FindAll(s => s.Name == selecteditem).ToArray();
+
+        if (selectedparkdata.Length > 0)
+        {
+          foreach (var items in selectedparkdata)
+          {
+            ContextMenu contextMenu = ContextMenuService.GetContextMenu(item);
+            contextMenu.DataContext = items;
+            if (contextMenu.Parent == null) {
+              contextMenu.IsOpen = true;
+            }
+            break;
+          }
+        }
+      }
+      catch
+      {
+      }
     }
 
     private void NavigateToWebsite(object sender, RoutedEventArgs e) {
@@ -295,6 +289,11 @@ namespace MildBrainInjury
         Uri = new Uri(button.NavigateUri.OriginalString)
       };
       wbt.Show();
+    }
+
+    private void Pivot_OnSelectionChanged(object sender, SelectionChangedEventArgs e) {
+      BuildLocalizedApplicationBar();
+      ApplicationBar.IsVisible = ((((Pivot)sender).SelectedIndex) == 1);
     }
   }
 }
