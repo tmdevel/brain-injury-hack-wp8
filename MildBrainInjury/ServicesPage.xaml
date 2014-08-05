@@ -66,7 +66,12 @@
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <!--Pivot Control-->
-        <phone:Pivot Title="Mild Brain Injury" Background="#FFEC0020" SelectionChanged="Pivot_OnSelectionChanged">
+        <phone:Pivot Title="Mild Brain Injury" SelectionChanged="Pivot_OnSelectionChanged">
+            <phone:Pivot.HeaderTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}" FontSize="40"/>
+                </DataTemplate>
+            </phone:Pivot.HeaderTemplate>
             <!--Pivot item one-->
             <phone:PivotItem Header="Services">
                 <phone:LongListSelector x:Name="ServicesList" 

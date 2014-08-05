@@ -37,6 +37,7 @@ namespace MildBrainInjury
       //}
     }
 
+
     // Sample code for building a localized ApplicationBar
     //private void BuildLocalizedApplicationBar()
     //{
@@ -62,5 +63,6 @@ namespace MildBrainInjury
       };
       wbt.Show();
     }
+
   }
 }

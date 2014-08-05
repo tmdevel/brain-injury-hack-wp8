@@ -6,6 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     mc:Ignorable="d"
     d:DataContext="{d:DesignData SampleData/MainViewModelSampleData.xaml}"
     FontFamily="/Assets/RleudCondensed-Bold.otf#Rleud Condensed"
@@ -37,9 +38,14 @@
          -->
 
         <!--Pivot Control-->
-        <phone:Pivot Title="Mild Brain Injury" Background="#FFE30613">
+        <phone:Pivot Title="Mild Brain Injury">
+            <phone:Pivot.HeaderTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}" FontSize="40"/>
+                </DataTemplate>
+            </phone:Pivot.HeaderTemplate>
             <!--Pivot item one-->
-            <phone:PivotItem Header="Mild Brain Injury" Margin="12,10,12,0">
+            <phone:PivotItem Header="Mild Brain Injury" Margin="12,10,12,0" Background="#FFE30613">
                 <!--Double line list with text wrapping-->
                 <!--<phone:LongListSelector Margin="0,0,-12,0">
                     <phone:LongListSelector.ItemTemplate ItemSource="">
@@ -49,9 +55,10 @@
                         <TextBlock Text="KNOW THE" Foreground="#FF8E1816" FontWeight="Bold" FontSize="72" HorizontalAlignment="Left"></TextBlock>
                         <TextBlock Text="R.I.S.K.S" FontWeight="Bold" FontSize="90" HorizontalAlignment="Left" Margin="0,-30,0,0"></TextBlock>
                     </StackPanel>
-                    <StackPanel Margin="0,7,0,10" VerticalAlignment="Bottom">
+                    <StackPanel x:Name="bottomTextPanel" Margin="0,7,0,10" VerticalAlignment="Bottom">
                         <Grid Background="White" Margin="0,0,0,5" HorizontalAlignment="Left">
-                            <TextBlock Text="R" HorizontalAlignment="Left" Foreground="#FFE30613" FontWeight="Bold" FontSize="24" Margin="5,2,0,-1"></TextBlock><TextBlock Text="EST" Foreground="#FF8E1816" TextWrapping="Wrap" Margin="20,0,8,0" Name="txt1" VerticalAlignment="Bottom" FontWeight="Bold" /></Grid>
+                            <TextBlock Text="R" HorizontalAlignment="Left" Foreground="#FFE30613" FontWeight="Bold" FontSize="24" Margin="5,2,0,-1"></TextBlock>
+                            <TextBlock Text="EST" Foreground="#FF8E1816" TextWrapping="Wrap" Margin="20,0,8,0" Name="txt1" VerticalAlignment="Bottom" FontWeight="Bold" /></Grid>
                         <Grid Background="White" Margin="0,0,0,5" HorizontalAlignment="Left">
                             <TextBlock Text="I" HorizontalAlignment="Left" Foreground="#FFE30613" FontWeight="Bold" FontSize="24" Margin="5,2,0,-1"></TextBlock><TextBlock Text="NFORM FRIENDS OR FAMILY" Foreground="#FF8E1816" TextWrapping="Wrap" Margin="12,-6,12,0" VerticalAlignment="Bottom" FontWeight="Bold" /></Grid>
                         <Grid Background="White" Margin="0,0,0,5" HorizontalAlignment="Left">
@@ -61,7 +68,7 @@
                         <Grid Background="White" Margin="0,0,0,5" HorizontalAlignment="Left">
                             <TextBlock Text="S" HorizontalAlignment="Left" Foreground="#FFE30613" FontWeight="Bold" FontSize="24" Margin="5,2,0,-1"></TextBlock><TextBlock Text="EEK MEDICAL ADVICE IF IN ANY DOUBT" Foreground="#FF8E1816" TextWrapping="Wrap" Margin="18,0,6,0" FontWeight="Bold" VerticalAlignment="Bottom" /></Grid>
                     </StackPanel>
-                    <Image HorizontalAlignment="Right" VerticalAlignment="Bottom" Source="/Assets/Mascot.png" Canvas.ZIndex="-1" Margin="0,0,-13,0" Height="400"/>
+                    <Image HorizontalAlignment="Right" VerticalAlignment="Bottom" Source="/Assets/Mascot.png" Canvas.ZIndex="-1" Margin="0,0,-13,0" Height="400" />
                 </Grid>
             </phone:PivotItem>
 
