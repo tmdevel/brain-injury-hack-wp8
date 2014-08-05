@@ -73,7 +73,7 @@
             </phone:PivotItem>
 
             <!--Pivot item two-->
-            <phone:PivotItem Header="DOS &amp; DON'TS">
+            <phone:PivotItem Header="DOS &amp; DON'TS" Background="#FF8E1816">
                 <!--Double line list no text wrapping-->
                 <!--<phone:LongListSelector Margin="0,0,-12,0">
                     <phone:LongListSelector.ItemTemplate>
