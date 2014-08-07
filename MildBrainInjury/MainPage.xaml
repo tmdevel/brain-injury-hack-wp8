@@ -19,7 +19,7 @@
     
     
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    <Grid x:Name="LayoutRoot">
 
         <!-- LOCALIZATION NOTE:
             To localize the displayed strings copy their values to appropriately named
@@ -41,7 +41,7 @@
          -->
 
         <!--Pivot Control-->
-        <phone:Pivot Title="Mild Brain Injury">
+        <phone:Pivot Title="Mild Brain Injury" SelectionChanged="Pivot_SelectionChanged">
             <phone:Pivot.HeaderTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding}" FontSize="40"/>
@@ -77,217 +77,23 @@
 
             <!--Pivot item two-->
             <phone:PivotItem Header="DOS &amp; DON'TS" Background="#FF8E1816">
-                <!--Double line list no text wrapping-->
-                <!--<phone:LongListSelector Margin="0,0,-12,0">
-                    <phone:LongListSelector.ItemTemplate>
-                            <DataTemplate>-->
-                <StackPanel Margin="0,-30,0,17" Background="White">
-                    <Grid Margin="0,6,0,0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="30"></ColumnDefinition>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Image Grid.Column="0" Source="Assets/tick.png" Margin="12,0,0,0" VerticalAlignment="Top"/>
-                        <Border Grid.Column="1" BorderThickness="1" BorderBrush="White" Background="#FF8E1816" CornerRadius="5" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="0" Margin="6,0,0,0">
-                            <TextBlock Text="DO" Margin="2"/>
-                        </Border>
-                        <TextBlock Grid.Column="2" Text="have plenty of rest of avoid stressful situations. " TextWrapping="Wrap" Margin="12,0,0,0" Foreground="#FF8E1816" />
-                    </Grid>
-
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="30"></ColumnDefinition>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Image Grid.Column="0" Source="Assets/tick.png" Margin="12,0,0,0" VerticalAlignment="Top"/>
-                        <Border Grid.Column="1" BorderThickness="1" BorderBrush="White" Background="#FF8E1816" CornerRadius="5" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="0" Margin="6,0,0,0">
-                            <TextBlock Text="DO" Margin="2"/>
-                        </Border>
-                        <TextBlock Grid.Column="2" Text="inform a friend or family member who can keep an eye on your condition.  Show them this card." TextWrapping="Wrap" Margin="12,0,0,0" Foreground="#FF8E1816" />
-                    </Grid>
-
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="30"></ColumnDefinition>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Image Grid.Column="0" Source="Assets/tick.png" Margin="12,0,0,0" VerticalAlignment="Top"/>
-                        <Border Grid.Column="1" BorderThickness="1" BorderBrush="White" Background="#FF8E1816" CornerRadius="5" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="0" Margin="6,0,0,0">
-                            <TextBlock Text="DO" Margin="2"/>
-                        </Border>
-                        <TextBlock Grid.Column="2" Text="be aware of signs and symptoms" TextWrapping="Wrap" Margin="12,0,0,0" Foreground="#FF8E1816" />
-                    </Grid>
-
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="30"></ColumnDefinition>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Image Grid.Column="0" Source="Assets/tick.png" Margin="12,0,0,0" VerticalAlignment="Top"/>
-                        <Border Grid.Column="1" BorderThickness="1" BorderBrush="White" Background="#FF8E1816" CornerRadius="5" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="0" Margin="6,0,0,0">
-                            <TextBlock Text="DO" Margin="2"/>
-                        </Border>
-                        <TextBlock Grid.Column="2" Text="stay within reach of a telephone and medical help in the next few days." TextWrapping="Wrap" Margin="12,0,0,0" Foreground="#FF8E1816" />
-                    </Grid>
-
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="30"></ColumnDefinition>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Image Grid.Column="0" Source="Assets/tick.png" Margin="12,0,0,0" VerticalAlignment="Top"/>
-                        <Border Grid.Column="1" BorderThickness="1" BorderBrush="White" Background="#FF8E1816" CornerRadius="5" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="0" Margin="6,0,0,0">
-                            <TextBlock Text="DO" Margin="2"/>
-                        </Border>
-                        <TextBlock Grid.Column="2" Text="DO take painkillers such as paracetamol for headaches." TextWrapping="Wrap" Margin="12,0,0,0" Foreground="#FF8E1816" />
-                    </Grid>
-                    
-                    <Rectangle Height="2" Fill="#FF8E1816" />
-
-                    <Grid Margin="0,6,0,0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="30"></ColumnDefinition>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Image Grid.Column="0" Source="Assets/cross.png" Margin="12,6,0,0" VerticalAlignment="Top"/>
-                        <Border Grid.Column="1" BorderThickness="1" BorderBrush="White" Background="#FFE30613" CornerRadius="5" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="0" Margin="6,0,0,0">
-                            <TextBlock Text="DON'T" Margin="2"/>
-                        </Border>
-                        <TextBlock Grid.Column="2" Text="stay at home alone for 48 hours" TextWrapping="Wrap" Margin="12,0,0,0" Foreground="#FFE30613" />
-                    </Grid>
-
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="30"></ColumnDefinition>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Image Grid.Column="0" Source="Assets/cross.png" Margin="12,6,0,0" VerticalAlignment="Top"/>
-                        <Border Grid.Column="1" BorderThickness="1" BorderBrush="White" Background="#FFE30613" CornerRadius="5" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="0" Margin="6,0,0,0">
-                            <TextBlock Text="DON'T" Margin="2"/>
-                        </Border>
-                        <TextBlock Grid.Column="2" Text="drink alcohol until you feel better" TextWrapping="Wrap" Margin="12,0,0,0" Foreground="#FFE30613" />
-                    </Grid>
-
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="30"></ColumnDefinition>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Image Grid.Column="0" Source="Assets/cross.png" Margin="12,6,0,0" VerticalAlignment="Top"/>
-                        <Border Grid.Column="1" BorderThickness="1" BorderBrush="White" Background="#FFE30613" CornerRadius="5" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="0" Margin="6,0,0,0">
-                            <TextBlock Text="DON'T" Margin="2"/>
-                        </Border>
-                        <TextBlock Grid.Column="2" Text="take aspirin or seeping tablets without consulting a doctor." TextWrapping="Wrap" Margin="12,0,0,0" Foreground="#FFE30613" />
-                    </Grid>
-
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="30"></ColumnDefinition>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Image Grid.Column="0" Source="Assets/cross.png" Margin="12,6,0,0" VerticalAlignment="Top"/>
-                        <Border Grid.Column="1" BorderThickness="1" BorderBrush="White" Background="#FFE30613" CornerRadius="5" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="0" Margin="6,0,0,0">
-                            <TextBlock Text="DON'T" Margin="2"/>
-                        </Border>
-                        <TextBlock Grid.Column="2" Text="return to work until you feel ready." TextWrapping="Wrap" Margin="12,0,0,0" Foreground="#FFE30613" />
-                    </Grid>
-
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="30"></ColumnDefinition>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Image Grid.Column="0" Source="Assets/cross.png" Margin="12,6,0,0" VerticalAlignment="Top"/>
-                        <Border Grid.Column="1" BorderThickness="1" BorderBrush="White" Background="#FFE30613" CornerRadius="5" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="0" Margin="6,0,0,0">
-                            <TextBlock Text="DON'T" Margin="2"/>
-                        </Border>
-                        <TextBlock Grid.Column="2" Text="play any contact sport for at least three weeks without consulting your doctor." TextWrapping="Wrap" Margin="12,0,0,0" Foreground="#FFE30613" />
-                    </Grid>
-
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="30"></ColumnDefinition>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Image Grid.Column="0" Source="Assets/cross.png" Margin="12,6,0,0" VerticalAlignment="Top"/>
-                        <Border Grid.Column="1" BorderThickness="1" BorderBrush="White" Background="#FFE30613" CornerRadius="5" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="0" Margin="6,0,0,0">
-                            <TextBlock Text="DON'T" Margin="2"/>
-                        </Border>
-                        <TextBlock Grid.Column="2" Text="return to driving until you feel you have recovered. If in doubt consult your doctor." TextWrapping="Wrap" Margin="12,0,0,0" Foreground="#FFE30613" />
-                    </Grid>
-
-                </StackPanel>
-                <!--</DataTemplate>
-                    </phone:LongListSelector.ItemTemplate>
-                </phone:LongListSelector>-->
+                <Image Grid.Column="0" Source="Assets/BI_Page_2.png" Margin="0,0,0,0" VerticalAlignment="Top"/>
             </phone:PivotItem>
 
             <!--Pivot item three-->
-            <phone:PivotItem Header="Minor Symptoms">
-                <Grid Margin="0,0,0,12">
-                    <StackPanel Margin="0,0,0,17">
-                        <TextBlock Text="WHILE MOST PEOPLE RECOVER QUICKLY YOU MAY EXPERIENCE SOME OF THE FOLLOWING SYMPTOMS OVER THE NEXT FEW DAYS AND WEEKS." TextWrapping="Wrap" Margin="12,0,0,12" FontWeight="Bold" />
-                        <StackPanel Margin="24,0,0,0">
-                            <TextBlock Text="- Headaches" TextWrapping="NoWrap" Margin="12,0,0,0" />
-                            <TextBlock Text="- Feelings of dizziness" TextWrapping="NoWrap" Margin="12,0,0,0" />
-                            <TextBlock Text="- Nausea" TextWrapping="NoWrap" Margin="12,0,0,0" />
-                            <TextBlock Text="- Sensitivity to light or noise" TextWrapping="NoWrap" Margin="12,0,0,0" />
-                            <TextBlock Text="- Sleep disturbance" TextWrapping="NoWrap" Margin="12,0,0,0" />
-                            <TextBlock Text="- Memory problems" TextWrapping="NoWrap" Margin="12,0,0,0" />
-                            <TextBlock Text="- Irritability" TextWrapping="NoWrap" Margin="12,0,0,0" />
-                            <TextBlock Text="- Restlessness" TextWrapping="NoWrap" Margin="12,0,0,0" />
-                            <TextBlock Text="- Fatigue" TextWrapping="NoWrap" Margin="12,0,0,0" />
-                            <TextBlock Text="- Impulsivity and self-control problems" TextWrapping="NoWrap" Margin="12,0,0,0" />
-                            <TextBlock Text="- Difficulties with concentration" TextWrapping="NoWrap" Margin="12,0,0,0" />
-                            <TextBlock Text="- Feeling depressed, tearful or anxious" TextWrapping="NoWrap" Margin="12,0,0,0" />
-                            <TextBlock Text="- Difficulties thinking and problem-solving" TextWrapping="NoWrap" Margin="12,0,0,0" />
-                        </StackPanel>
-                    </StackPanel>
-                    <Grid VerticalAlignment="Bottom">
-                        <TextBlock Text="In most cases these symptoms will resolve themselves within two weeks." TextWrapping="Wrap" Margin="12,0,0,0" FontWeight="Bold" />
-                    </Grid>
-                </Grid>
+            <phone:PivotItem Header="Minor Symptoms" Background="#FFE30613">
+                <Image Grid.Column="0" Source="Assets/BI_Page_3.png" Margin="0,0,0,0" VerticalAlignment="Top"/>
             </phone:PivotItem>
 
-            <!--Pivot item three-->
-            <phone:PivotItem Header="Major Symptoms">
-                <StackPanel Margin="0,0,0,17">
-                    <TextBlock Text="OCCASIONALLY SOME SYMPTOMS MAY PERSIST FOR LONGER. IF IN ANY DOUBT CONTACT YOUR GP AS SOON AS POSSIBLE. THERE IS ALSO A SMALL RISK OF DEVELOPING COMPLICATIONS SO IF YOU EXPERIENCE ANY OF THE FOLLOWING SYMPTOMS GO TO YOUR LOCAL A&amp;E DEPARTMENT IMMEDIATELY. " TextWrapping="Wrap" Margin="12,0,0,24" FontWeight="Bold" />
-                    <StackPanel Margin="24,0,0,0">
-                        <TextBlock Text="- Loss of consciousness and / or fits" TextWrapping="NoWrap" Margin="12,0,0,0" />
-                        <TextBlock Text="- Bleeding from one or both ears" TextWrapping="NoWrap" Margin="12,0,0,0" />
-                        <TextBlock Text="- Problems with vision, speech or hearing" TextWrapping="NoWrap" Margin="12,0,0,0" />
-                        <TextBlock Text="- Increasing disorientation or loss of balance" TextWrapping="NoWrap" Margin="12,0,0,0" />
-                        <TextBlock Text="- Drowsiness" TextWrapping="NoWrap" Margin="12,0,0,0" />
-                        <TextBlock Text="- Clear fluid from ears and nose" TextWrapping="NoWrap" Margin="12,0,0,0" />
-                        <TextBlock Text="- Any vomiting" TextWrapping="NoWrap" Margin="12,0,0,0" />
-                    </StackPanel>
-                    <StackPanel Height="130" Background="White" Margin="0,24,0,0">
-                        <TextBlock Text="For information on Brain Injury Services in Northern Ireland go to the links section of" Foreground="#FF8E1816" TextWrapping="Wrap" Margin="24,6,0,0"></TextBlock>
-                        <HyperlinkButton Click="ShowWebsite" Foreground="#FF8E1816" HorizontalAlignment="Left" Margin="12,-6,0,0">www.hscboard.hscni.net/RABIIG</HyperlinkButton>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="90"></ColumnDefinition>
-                                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                        <Image Grid.Column="0" Source="Assets/HSClogo.png" HorizontalAlignment="Left" Width="60" Margin="24,6,0,0"/>
-                        <TextBlock Grid.Column="1" Text="Health and Social Carein Northern Ireland" Foreground="Black" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="0,6,0,0" Width="250" FontSize="18"></TextBlock>
-                        </Grid>
-                    </StackPanel>
-                </StackPanel>
+            <!--Pivot item four-->
+            <phone:PivotItem Header="Major Symptoms" Background="#FF8E1816">
+                <Image Grid.Column="0" Source="Assets/BI_Page_4.png" Margin="0,0,0,0" VerticalAlignment="Top"/>
             </phone:PivotItem>
 
+            <!--Pivot item five-->
+            <phone:PivotItem Header="Support" Background="#FFE30613">
+                
+            </phone:PivotItem>
         </phone:Pivot>
 
         <!--Uncomment to see an alignment grid to help ensure your controls are

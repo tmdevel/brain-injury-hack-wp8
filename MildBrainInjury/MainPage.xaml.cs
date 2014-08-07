@@ -9,6 +9,8 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using MildBrainInjury.Resources;
+using System.Windows.Media;
+using System.Globalization;
 
 namespace MildBrainInjury
 {
@@ -63,6 +65,26 @@ namespace MildBrainInjury
       };
       wbt.Show();
     }
+
+    private void thisPivot_selectionChanged(object sender, SelectionChangedEventArgs e) {
+        
+    }
+
+    private void Pivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        Pivot pivot = (Pivot)sender;
+        PivotItem selected = (PivotItem)pivot.SelectedItem;
+        //Object selected = Pivot1.SelectedItem;
+        
+        Brush colourcode = selected.Background;
+        LayoutRoot.Background = colourcode;
+        
+        //Brush colourcode = PivotItem2.Background;
+               
+        
+        //LayoutRoot.Background = new SolidColorBrush(Color.FromArgb(255,227,6,19));
+    }
+
 
   }
 }
