@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Resources;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Navigation;
+using Windows.ApplicationModel;
+using Windows.Storage;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using MildBrainInjury.Resources;
@@ -13,20 +16,9 @@ namespace MildBrainInjury
 {
   public partial class App : Application
   {
-    private static MainViewModel viewModel = null;
-
-    /// <summary>
-    /// A static ViewModel used by the views to bind against.
-    /// </summary>
-    /// <returns>The MainViewModel object.</returns>
-    public static MainViewModel ViewModel
-    {
-      get
-      {
-        // Delay creation of the view model until necessary
-        if (viewModel == null)
-          viewModel = new MainViewModel();
-
+    private static OrganisationViewModel viewModel = null;
+    public static OrganisationViewModel ViewModel {
+      get {
         return viewModel;
       }
     }
@@ -73,6 +65,46 @@ namespace MildBrainInjury
         // and consume battery power when the user is not using the phone.
         PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
       }
+
+
+      Task loadData = Task.Factory.StartNew(LoadData);
+      loadData.Wait();
+    }
+
+    /// <summary>
+    /// LoadData first checks to see if the DB exists locally (first time it wont), after that
+    /// the viewModel is loaded and initialised. Only then will the main page be loaded
+    /// </summary>
+    private async void LoadData() {
+      // Specify the local database connection string.
+      string DBConnectionString = ApplicationData.Current.LocalFolder.Path + "\\MindMateNI.db";
+
+      await CopyDatabase();
+      viewModel = new OrganisationViewModel(DBConnectionString);
+      viewModel.LoadData();
+    }
+
+    private async Task CopyDatabase() {
+      bool isDatabaseExisting;
+
+      try {
+        await ApplicationData.Current.LocalFolder.GetFileAsync("MindMateNI.db");
+        isDatabaseExisting = true;
+      }
+      catch {
+        isDatabaseExisting = false;
+      }
+
+      if (!isDatabaseExisting) {
+        try {
+          StorageFile databaseFile = await Package.Current.InstalledLocation.GetFileAsync("MindMateNI.db");
+          await databaseFile.CopyAsync(ApplicationData.Current.LocalFolder);
+          isDatabaseExisting = true; // used for debugging
+        }
+        catch {
+          // Couldnt load database
+        }
+      }
     }
 
     // Code to execute when the application is launching (eg, from Start)
@@ -85,11 +117,6 @@ namespace MildBrainInjury
     // This code will not execute when the application is first launched
     private void Application_Activated(object sender, ActivatedEventArgs e)
     {
-      // Ensure that application state is restored appropriately
-      if (!App.ViewModel.IsDataLoaded)
-      {
-        App.ViewModel.LoadData();
-      }
     }
 
     // Code to execute when the application is deactivated (sent to background)

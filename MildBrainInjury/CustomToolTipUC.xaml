@@ -10,11 +10,11 @@
     d:DesignHeight="480" d:DesignWidth="480" xmlns:Toolkit= "clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit">
     <StackPanel  HorizontalAlignment="Center" VerticalAlignment="Center">
 
-        <Image Tag="{Binding Name}" Source="/Assets/MapPin.png" Stretch="None"  x:Name="imgmarker" HorizontalAlignment="Left" >
+        <Image Tag="{Binding name}" Source="/Assets/MapPin.png" Stretch="None"  x:Name="imgmarker" HorizontalAlignment="Left" >
             <Toolkit:ContextMenuService.ContextMenu>
                 <Toolkit:ContextMenu  IsZoomEnabled="True" 
                                         Style="{StaticResource MenuStyle}" >
-                    <Toolkit:MenuItem Tag="{Binding Name}" Name="Menuitem"
+                    <Toolkit:MenuItem Tag="{Binding name}" Name="Menuitem"
                                Style="{StaticResource MenuItemStyle}" />
                 </Toolkit:ContextMenu>
             </Toolkit:ContextMenuService.ContextMenu>

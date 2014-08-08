@@ -8,44 +8,52 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:maps="clr-namespace:Microsoft.Phone.Maps.Controls;assembly=Microsoft.Phone.Maps"
     mc:Ignorable="d"
-    d:DataContext="{d:DesignData SampleData/MainViewModelSampleData.xaml}"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait"  Orientation="Portrait"
-    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     shell:SystemTray.IsVisible="True">
 
     <phone:PhoneApplicationPage.Resources>
         <DataTemplate x:Key="AddrBookItemTemplate">
             <StackPanel VerticalAlignment="Top">
-                <TextBlock FontWeight="Bold" Text="{Binding Name}" />
-                <HyperlinkButton Content="{Binding Address}" NavigateUri="{Binding Address}" HorizontalAlignment="Left" TargetName="_blank"/>
-                <TextBlock Text="{Binding Phone}" HorizontalAlignment="Left" Margin="12,0,0,0" />
+                <TextBlock FontWeight="Bold" Text="{Binding name}" />
+                <HyperlinkButton Content="{Binding address1}" NavigateUri="{Binding address1}" HorizontalAlignment="Left" TargetName="_blank"/>
+                <TextBlock Text="{Binding telephone}" HorizontalAlignment="Left" Margin="12,0,0,0" />
             </StackPanel>
         </DataTemplate>
-        <DataTemplate x:Key="AddrBookGroupHeaderTemplate">
-            <Border Background="Transparent" Padding="5">
-                <Border Background="{StaticResource PhoneAccentBrush}" BorderBrush="WhiteSmoke" BorderThickness="2" Width="202" 
-         Height="62" Margin="0,0,18,0" HorizontalAlignment="Left">
-                    <Grid Background="White" Margin="0,0,0,0" HorizontalAlignment="Left" Width="202">
-                        <TextBlock Text="{Binding CategoryFirst}" 
-                       FontSize="48" 
-                       HorizontalAlignment="Left" 
-                       Foreground="#FFE30613" 
-                       FontWeight="Bold" 
+    <DataTemplate x:Key="AddrBookGroupHeaderTemplate">
+      <Border Background="Transparent"
+              Padding="5">
+        <Border Background="{StaticResource PhoneAccentBrush}"
+                BorderBrush="WhiteSmoke"
+                BorderThickness="2"
+                Width="202"
+                Height="62"
+                Margin="0,0,18,0"
+                HorizontalAlignment="Left">
+          <Grid Background="White"
+                Margin="0,0,0,0"
+                HorizontalAlignment="Left"
+                Width="202">
+            <TextBlock Text="{Binding contact}"
+                       FontSize="48"
+                       HorizontalAlignment="Left"
+                       Foreground="#FFE30613"
+                       FontWeight="Bold"
                        Margin="5,2,0,-1" />
-                        <TextBlock Text="{Binding CategoryRest}" 
-                         Foreground="#FF8E1816" 
-                         TextWrapping="Wrap" Margin="40,0,8,0" 
-                         Name="txt1" 
-                         VerticalAlignment="Bottom" 
-                         FontWeight="Bold" />
-                    </Grid>
-                </Border>
-            </Border>
-        </DataTemplate>
-        <phone:JumpListItemBackgroundConverter x:Key="BackgroundConverter"/>
+            <TextBlock Text="{Binding name}"
+                       Foreground="#FF8E1816"
+                       TextWrapping="Wrap"
+                       Margin="40,0,8,0"
+                       Name="txt1"
+                       VerticalAlignment="Bottom"
+                       FontWeight="Bold" />
+          </Grid>
+        </Border>
+      </Border>
+    </DataTemplate>
+    <phone:JumpListItemBackgroundConverter x:Key="BackgroundConverter"/>
         <phone:JumpListItemForegroundConverter x:Key="ForegroundConverter"/>
         <Style x:Key="AddrBookJumpListStyle" TargetType="phone:LongListSelector">
             <Setter Property="GridCellSize"  Value="113,113"/>
@@ -76,15 +84,13 @@
             <phone:PivotItem Header="Services">
                 <phone:LongListSelector x:Name="ServicesList" 
                                 JumpListStyle="{StaticResource AddrBookJumpListStyle}"
-                                GroupHeaderTemplate="{StaticResource AddrBookGroupHeaderTemplate}"
                                 ItemTemplate="{StaticResource AddrBookItemTemplate}"
+                                GroupHeaderTemplate="{StaticResource AddrBookGroupHeaderTemplate}"
                                 LayoutMode="List"
-                                IsGroupingEnabled="true"
                                 HideEmptyGroups ="true"
                                 />
-
+        <!--IsGroupingEnabled="True"-->
             </phone:PivotItem>
-
             <!--Pivot item two-->
             <phone:PivotItem Header="Map">
                 <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,12,12,12">

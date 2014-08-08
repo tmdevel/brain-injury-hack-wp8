@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Device.Location;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using MildBrainInjury.Models;
 using ViewModels;
 using System.Windows.Media;
 using System.Windows.Shapes;
@@ -31,7 +34,7 @@ namespace MildBrainInjury {
    
     MapLayer locationLayer = null;
 
-    private List<SupportSevice> source;
+    private ObservableCollection<Organisation> source;
     public List<GeoCoordinate> MyCoordinates = new List<GeoCoordinate>();
 
     public ServicesPage() {
@@ -48,26 +51,30 @@ namespace MildBrainInjury {
     }
 
     private void SetupDataForServices() {
-      /*
+      
       if (!App.ViewModel.IsDataLoaded) {
         App.ViewModel.LoadData();
       }
-      DataContext = App.ViewModel;*/
+      //var query = App.ViewModel.Organisations;
 
-      source = new List<SupportSevice>();
-      source.Add(new SupportSevice("Carers NI", "http://www.carersni.org", "02890439843", "Aftercare", -0.092215, 51.499559));
-      source.Add(new SupportSevice("Child Brain Injury", "http://www.cbituk.org", "02890817145", "Aftercare", -1.201954, 51.961212));
-      source.Add(new SupportSevice("Cedar", "http://www.cedar-foundatiom.org", "02890666188", "Help", -5.944646, 54.584680));
-      source.Add(new SupportSevice("Jigsaw", "http://www.jigsawni.org.uk", "02890319054", "Help", -5.940712, 54.601806));
-      source.Add(new SupportSevice("Praxis Care", "http://www.praxisprovides.com", "02890234555", "Help", -5.939479, 54.587831));
+      //source = new List<SupportSevice>();
+      //source.Add(new SupportSevice("Carers NI", "http://www.carersni.org", "02890439843", "Aftercare", -0.092215, 51.499559));
+      //source.Add(new SupportSevice("Child Brain Injury", "http://www.cbituk.org", "02890817145", "Aftercare", -1.201954, 51.961212));
+      //source.Add(new SupportSevice("Cedar", "http://www.cedar-foundatiom.org", "02890666188", "Help", -5.944646, 54.584680));
+      //source.Add(new SupportSevice("Jigsaw", "http://www.jigsawni.org.uk", "02890319054", "Help", -5.940712, 54.601806));
+      //source.Add(new SupportSevice("Praxis Care", "http://www.praxisprovides.com", "02890234555", "Help", -5.939479, 54.587831));
 
-      List<CategorisedGroup<SupportSevice>> DataSource = CategorisedGroup<SupportSevice>.CreateGroups(source,
-                                                                                            System.Threading.Thread
-                                                                                                  .CurrentThread
-                                                                                                  .CurrentUICulture,
-                                                                                            (SupportSevice s) => s.Category, true);
+      //List<CategorisedGroup<SupportSevice>> DataSource = CategorisedGroup<SupportSevice>.CreateGroups(source,
+      //                                                                                      System.Threading.Thread
+      //                                                                                            .CurrentThread
+      //                                                                                            .CurrentUICulture,
+      //                                                                                      (SupportSevice s) => s.Category, true);
 
-      ServicesList.ItemsSource = DataSource;
+      var query = from organisation in App.ViewModel.Organisations select organisation;
+      
+      source = new ObservableCollection<Organisation>(query);
+
+      ServicesList.ItemsSource = source;
 
     }
 
@@ -217,7 +224,8 @@ namespace MildBrainInjury {
         ServicesMap.Layers.Clear();
         MyCoordinates.Clear();
         foreach (var s in source) {
-          MyCoordinates.Add(new GeoCoordinate { Latitude = double.Parse("" + s.Latitute), Longitude = double.Parse("" + s.Longitute) });
+          if (!String.IsNullOrEmpty(s.lat) && (!String.IsNullOrEmpty(s.@long)))
+            MyCoordinates.Add(new GeoCoordinate { Latitude = double.Parse("" + s.lat), Longitude = double.Parse("" + s.@long) });
         }
 
         DrawMapMarkers();
@@ -243,7 +251,7 @@ namespace MildBrainInjury {
       // Draw markers for location(s) / destination(s)
       for (int i = 0; i < MyCoordinates.Count; i++) {
         CustomToolTipUC _tooltip = new CustomToolTipUC();
-        _tooltip.Description = source[i].Name;// + "\n" + source[i].Address;
+        _tooltip.Description = source[i].name;// + "\n" + source[i].Address;
         _tooltip.DataContext = source[i];
         //_tooltip.Menuitem.Click += Menuitem_Click;
         _tooltip.imgmarker.Tap += _tooltip_Tapimg;
@@ -260,12 +268,10 @@ namespace MildBrainInjury {
       try {
         Image item = (Image)sender;
         string selecteditem = item.Tag.ToString();
-        var selectedparkdata = source.FindAll(s => s.Name == selecteditem).ToArray();
+        var selectedparkdata = source.Where(s => s.name == selecteditem).ToList();
 
-        if (selectedparkdata.Length > 0)
-        {
-          foreach (var items in selectedparkdata)
-          {
+        if (selectedparkdata.Count > 0) {
+          foreach (var items in selectedparkdata) {
             ContextMenu contextMenu = ContextMenuService.GetContextMenu(item);
             contextMenu.DataContext = items;
             if (contextMenu.Parent == null) {

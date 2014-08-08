@@ -13,11 +13,11 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="Toolkit:MenuItem">
                         <StackPanel>
-                            <TextBlock Margin="5,0,0,0" Foreground="White" Text="{Binding Name}" 
+                            <TextBlock Margin="5,0,0,0" Foreground="White" Text="{Binding name}" 
                                        TextWrapping="Wrap" 
                                        FontSize="26"
                                        FontWeight="Bold"/>
-                            <TextBlock  Foreground="White"  Text="{Binding Address}" 
+                            <TextBlock Foreground="White"  Text="{Binding address1}" 
                                        TextTrimming="WordEllipsis" 
                                        Margin="5,0" 
                                        FontSize="22"/>

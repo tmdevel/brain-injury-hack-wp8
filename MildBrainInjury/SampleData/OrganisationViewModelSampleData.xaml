@@ -1,0 +1,14 @@
+﻿<vm:OrganisationViewModel
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:models="clr-namespace:MildBrainInjury.Models"
+    xmlns:vm="clr-namespace:MildBrainInjury.ViewModels">
+
+  <vm:OrganisationViewModel.Organisations>
+    <models:Organisation id="0" contact="Jane Doe" distanceDisplay="Distance: 3.14 Km" name="Sample Service 0" address1="123 Sample Street" address2="Apartment 1a" telephone="02890123456" town="Belfast" postcode="BT1 2AB" ageGroups="0-99" overviewOfServices="This is an overview of the services that this particular organisation offers"/>
+    <models:Organisation id="1" contact="Jane Doe" distanceDisplay="Distance: 3.14 Km" name="Sample Service 1" address1="123 Sample Street" address2="Apartment 1a" telephone="02890123456" town="Belfast" postcode="BT1 2AB" ageGroups="0-99" overviewOfServices="This is an overview of the services that this particular organisation offers"/>
+    <models:Organisation id="2" contact="Jane Doe" distanceDisplay="Distance: 3.14 Km" name="Sample Service 2" address1="123 Sample Street" address2="Apartment 1a" telephone="02890123456" town="Belfast" postcode="BT1 2AB" ageGroups="0-99" overviewOfServices="This is an overview of the services that this particular organisation offers"/>
+    <models:Organisation id="3" contact="Jane Doe" distanceDisplay="Distance: 3.14 Km" name="Sample Service 3" address1="123 Sample Street" address2="Apartment 1a" telephone="02890123456" town="Belfast" postcode="BT1 2AB" ageGroups="0-99" overviewOfServices="This is an overview of the services that this particular organisation offers"/>
+  </vm:OrganisationViewModel.Organisations>
+
+</vm:OrganisationViewModel>
