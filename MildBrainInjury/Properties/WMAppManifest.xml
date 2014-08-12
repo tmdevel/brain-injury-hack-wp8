@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
   <DefaultLanguage xmlns="" code="en-US" />
-  <App xmlns="" ProductID="{d25ece4d-1887-4c96-b56f-a5a1447f7fc8}" Title="MildBrainInjury" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="MildBrainInjury author" Description="Sample description" Publisher="MildBrainInjury" PublisherID="{194caed3-ee26-45e8-acfe-93862174b490}">
+  <App xmlns="" ProductID="{d25ece4d-1887-4c96-b56f-a5a1447f7fc8}" Title="R.I.S.K.S" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="MildBrainInjury author" Description="R.I.S.K.S" Publisher="MildBrainInjury" PublisherID="{194caed3-ee26-45e8-acfe-93862174b490}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />
@@ -21,7 +21,7 @@
           <SmallImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileSmall.png</SmallImageURI>
           <Count>0</Count>
           <BackgroundImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileMedium.png</BackgroundImageURI>
-          <Title>MildBrainInjury</Title>
+          <Title>R.I.S.K.S</Title>
           <BackContent>
           </BackContent>
           <BackBackgroundImageURI>

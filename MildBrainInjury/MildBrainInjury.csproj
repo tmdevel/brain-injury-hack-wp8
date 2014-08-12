@@ -148,6 +148,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\AppBar\home.png" />
     <Content Include="Assets\BI_Page_2.png" />
     <Content Include="Assets\BI_Page_3.png" />
     <Content Include="Assets\BI_Page_4.png" />
@@ -177,6 +178,14 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <Content Include="pdf\1 Information Leaflet on Brain Injury.pdf" />
+    <Content Include="pdf\2 Arrival at Hospital and Early Treatment for Moderate to Severe Acquired Brain Injury.pdf" />
+    <Content Include="pdf\3 Discharge and Leaving Hospital.pdf" />
+    <Content Include="pdf\4 Recovery and Early Rehabilitation.pdf" />
+    <Content Include="pdf\5 Rehabilitation.pdf" />
+    <Content Include="pdf\6 Acquired Brain Injury in Children and Young People.pdf" />
+    <Content Include="pdf\7 Family Dynamics and Caring Responsibility.pdf" />
+    <Content Include="pdf\8 Support Services Available.pdf" />
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\DataSources\MildBrainInjury.ViewModels.ItemViewModel.datasource" />
     <None Include="Properties\WMAppManifest.xml">
@@ -206,6 +215,7 @@
     <EmbeddedResource Include="Resources\AppResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -222,6 +232,7 @@
       <Name>SQLite for Windows Phone</Name>
     </SDKReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

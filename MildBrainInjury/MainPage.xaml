@@ -6,7 +6,6 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     mc:Ignorable="d"
     d:DataContext="{d:DesignData SampleData/MainViewModelSampleData.xaml}"
     FontFamily="/Assets/RleudCondensed-Bold.otf#Rleud Condensed"
@@ -15,33 +14,11 @@
     SupportedOrientations="Portrait"  Orientation="Portrait"
     shell:SystemTray.IsVisible="True">
 
-    <!-- this is a change -->
-    
-    
-    <!--LayoutRoot is the root grid where all page content is placed-->
+  <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot">
 
-        <!-- LOCALIZATION NOTE:
-            To localize the displayed strings copy their values to appropriately named
-            keys in the app's neutral language resource file (AppResources.resx) then
-            replace the hard-coded text value between the attributes' quotation marks
-            with the binding clause whose path points to that string name.
-
-            For example:
-
-                Text="{Binding Path=LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}"
-
-            This binding points to the template's string resource named "ApplicationTitle".
-
-            Adding supported languages in the Project Properties tab will create a
-            new resx file per language that can carry the translated values of your
-            UI strings. The binding in these examples will cause the value of the
-            attributes to be drawn from the .resx file that matches the
-            CurrentUICulture of the app at run time.
-         -->
-
         <!--Pivot Control-->
-        <phone:Pivot Title="Mild Brain Injury" SelectionChanged="Pivot_SelectionChanged">
+        <phone:Pivot SelectionChanged="Pivot_SelectionChanged">
             <phone:Pivot.HeaderTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding}" FontSize="40"/>
@@ -76,23 +53,49 @@
             </phone:PivotItem>
 
             <!--Pivot item two-->
-            <phone:PivotItem Header="DOS &amp; DON'TS" Background="#FF8E1816">
-                <Image Grid.Column="0" Source="Assets/BI_Page_2.png" Margin="0,0,0,0" VerticalAlignment="Top"/>
+            <phone:PivotItem Header="DOS &amp; DON'TS" Background="#FF8E1816" Margin="-10,0,-10,0">
+                <Image Source="Assets/BI_Page_2.png" Margin="0,0,0,0" VerticalAlignment="Top"/>
             </phone:PivotItem>
 
             <!--Pivot item three-->
-            <phone:PivotItem Header="Minor Symptoms" Background="#FFE30613">
-                <Image Grid.Column="0" Source="Assets/BI_Page_3.png" Margin="0,0,0,0" VerticalAlignment="Top"/>
+            <phone:PivotItem Header="Minor Symptoms" Background="#FFE30613" Margin="-10,0,-10,0">
+                <Image Source="Assets/BI_Page_3.png" Margin="0,0,0,0" VerticalAlignment="Top"/>
             </phone:PivotItem>
 
             <!--Pivot item four-->
-            <phone:PivotItem Header="Major Symptoms" Background="#FF8E1816">
-                <Image Grid.Column="0" Source="Assets/BI_Page_4.png" Margin="0,0,0,0" VerticalAlignment="Top"/>
+            <phone:PivotItem Header="Major Symptoms" Background="#FF8E1816" Margin="-10,0,-10,0">
+                <Image Source="Assets/BI_Page_4.png" Margin="0,0,0,0" VerticalAlignment="Top"/>
             </phone:PivotItem>
 
             <!--Pivot item five-->
-            <phone:PivotItem Header="Support" Background="#FFE30613">
-                
+            <phone:PivotItem Header="Support" Background="#FFE30613" Margin="0, 20, 0, 0">
+              <phone:LongListSelector x:Name="SupportDocumentList"
+                                Tap="SupportDocumentList_OnTap" >
+          <phone:LongListSelector.ItemTemplate>
+            <DataTemplate>
+              <StackPanel VerticalAlignment="Center"
+                          Background="White"
+                          Orientation="Horizontal">
+                <Border Width="72"
+                        Height="72"
+                        HorizontalAlignment="Left"
+                        Background="{Binding DocColor}">
+                  <TextBlock FontSize="36"
+                             Padding="6"
+                             VerticalAlignment="Center"
+                             HorizontalAlignment="Center"
+                             Text="{Binding DocId}" />
+                </Border>
+                <TextBlock Margin="10,0,0,0"
+                           Width="400"
+                           VerticalAlignment="Center"
+                           TextWrapping="Wrap"
+                           Foreground="black"
+                           Text="{Binding DocName}" />
+              </StackPanel>
+            </DataTemplate>
+          </phone:LongListSelector.ItemTemplate>
+        </phone:LongListSelector>
             </phone:PivotItem>
         </phone:Pivot>
 
@@ -108,7 +111,7 @@
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar Mode="Minimized" IsVisible="True" IsMenuEnabled="True">
             <shell:ApplicationBarIconButton IconUri="/Assets/feature.search.png" Text="Services" Click="ShowServices" />
-            <shell:ApplicationBarIconButton IconUri="/Assets/linkto.png" Text="Website" Click="ShowWebsite" />
+            <!--<shell:ApplicationBarIconButton IconUri="/Assets/linkto.png" Text="Website" Click="ShowWebsite" />-->
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
 

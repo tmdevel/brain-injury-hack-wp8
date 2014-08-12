@@ -126,7 +126,7 @@
     <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
   </data>
   <data name="ApplicationTitle" xml:space="preserve">
-    <value>MY APPLICATION</value>
+    <value>R.I.S.K.S</value>
   </data>
   <data name="SampleProperty" xml:space="preserve">
     <value>Sample Runtime Property Value</value>
@@ -160,5 +160,11 @@
   </data>
   <data name="AppBarZoomOutMenuItemText" xml:space="preserve">
     <value>zoom out</value>
+  </data>
+  <data name="AppBarHomeButtonText" xml:space="preserve">
+    <value>home</value>
+  </data>
+  <data name="AppSupportAgency" xml:space="preserve">
+    <value>ABI</value>
   </data>
 </root>

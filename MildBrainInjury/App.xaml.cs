@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Resources;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Markup;
@@ -28,6 +27,8 @@ namespace MildBrainInjury
     /// </summary>
     /// <returns>The root frame of the Phone Application.</returns>
     public static PhoneApplicationFrame RootFrame { get; private set; }
+
+    public static bool DisclaimerAccepted { get; set; }
 
     /// <summary>
     /// Constructor for the Application object.
@@ -69,6 +70,9 @@ namespace MildBrainInjury
 
       Task loadData = Task.Factory.StartNew(LoadData);
       loadData.Wait();
+
+      // Set up globals
+      DisclaimerAccepted = false;
     }
 
     /// <summary>
@@ -81,7 +85,7 @@ namespace MildBrainInjury
 
       await CopyDatabase();
       viewModel = new OrganisationViewModel(DBConnectionString);
-      viewModel.LoadData();
+      //viewModel.LoadData();
     }
 
     private async Task CopyDatabase() {

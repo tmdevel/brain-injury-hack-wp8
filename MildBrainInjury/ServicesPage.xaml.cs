@@ -6,7 +6,6 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using MildBrainInjury.Models;
-using ViewModels;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
@@ -46,7 +45,6 @@ namespace MildBrainInjury {
     }
 
     private void ServiceMapView_Loaded(object sender, RoutedEventArgs e) {
-
       ReadLocations();
     }
 
@@ -185,32 +183,48 @@ namespace MildBrainInjury {
     #endregion
 
     // Create the localized ApplicationBar.
-    private void BuildLocalizedApplicationBar() {
+    private void BuildLocalizedApplicationBar(bool isMap)
+    {
       // Set the page's ApplicationBar to a new instance of ApplicationBar.
       ApplicationBar = new ApplicationBar();
       ApplicationBar.Opacity = 0.5;
 
-      // Create buttons with localized strings from AppResources.
-      // Toggle Location button.
-      ApplicationBarIconButton appBarButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/location.png", UriKind.Relative));
-      appBarButton.Text = AppResources.AppBarToggleLocationButtonText;
-      appBarButton.Click += ToggleLocation;
-      ApplicationBar.Buttons.Add(appBarButton);
-      // Toggle Landmarks button.
-      appBarButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/landmarks.png", UriKind.Relative));
-      appBarButton.Text = AppResources.AppBarToggleLandmarksButtonText;
-      appBarButton.Click += ToggleLandmarks;
-      ApplicationBar.Buttons.Add(appBarButton);
-      // Zoom In button.
-      appBarButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/zoomin.png", UriKind.Relative));
-      appBarButton.Text = AppResources.AppBarZoomInButtonText;
-      appBarButton.Click += ZoomIn;
-      ApplicationBar.Buttons.Add(appBarButton);
-      // Zoom Out button.
-      appBarButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/zoomout.png", UriKind.Relative));
-      appBarButton.Text = AppResources.AppBarZoomOutButtonText;
-      appBarButton.Click += ZoomOut;
-      ApplicationBar.Buttons.Add(appBarButton);
+      if (isMap) {
+        // Toggle Location button.
+        ApplicationBarIconButton appBarButton =
+          new ApplicationBarIconButton(new Uri("/Assets/AppBar/location.png", UriKind.Relative));
+        appBarButton.Text = AppResources.AppBarToggleLocationButtonText;
+        appBarButton.Click += ToggleLocation;
+        ApplicationBar.Buttons.Add(appBarButton);
+        // Toggle Landmarks button.
+        appBarButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/landmarks.png", UriKind.Relative));
+        appBarButton.Text = AppResources.AppBarToggleLandmarksButtonText;
+        appBarButton.Click += ToggleLandmarks;
+        ApplicationBar.Buttons.Add(appBarButton);
+        // Zoom In button.
+        appBarButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/zoomin.png", UriKind.Relative));
+        appBarButton.Text = AppResources.AppBarZoomInButtonText;
+        appBarButton.Click += ZoomIn;
+        ApplicationBar.Buttons.Add(appBarButton);
+        // Zoom Out button.
+        appBarButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/zoomout.png", UriKind.Relative));
+        appBarButton.Text = AppResources.AppBarZoomOutButtonText;
+        appBarButton.Click += ZoomOut;
+        ApplicationBar.Buttons.Add(appBarButton);
+      }
+      else {
+        // Home button.
+        ApplicationBarIconButton appBarButton =
+          new ApplicationBarIconButton(new Uri("/Assets/AppBar/home.png", UriKind.Relative));
+        appBarButton.Text = AppResources.AppBarHomeButtonText;
+        appBarButton.Click += GoHome;
+        ApplicationBar.Mode = ApplicationBarMode.Minimized;
+        ApplicationBar.Buttons.Add(appBarButton);
+      }
+    }
+
+    private void GoHome(object sender, EventArgs e)  {
+      NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
     }
 
     private enum ToggleStatus {
@@ -298,8 +312,7 @@ namespace MildBrainInjury {
     }
 
     private void Pivot_OnSelectionChanged(object sender, SelectionChangedEventArgs e) {
-      BuildLocalizedApplicationBar();
-      ApplicationBar.IsVisible = ((((Pivot)sender).SelectedIndex) == 1);
+      BuildLocalizedApplicationBar(((((Pivot)sender).SelectedIndex) == 1));
     }
   }
 }

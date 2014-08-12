@@ -14,7 +14,7 @@
     SupportedOrientations="Portrait"  Orientation="Portrait"
     shell:SystemTray.IsVisible="True">
 
-    <phone:PhoneApplicationPage.Resources>
+  <phone:PhoneApplicationPage.Resources>
         <DataTemplate x:Key="AddrBookItemTemplate">
             <StackPanel VerticalAlignment="Top">
                 <TextBlock FontWeight="Bold" Text="{Binding name}" />
@@ -72,33 +72,34 @@
     </phone:PhoneApplicationPage.Resources>
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
-        <!--Pivot Control-->
-        <phone:Pivot Title="Mild Brain Injury" SelectionChanged="Pivot_OnSelectionChanged">
-            <phone:Pivot.HeaderTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding}" FontSize="40"/>
-                </DataTemplate>
-            </phone:Pivot.HeaderTemplate>
-            <!--Pivot item one-->
-            <phone:PivotItem Header="Services">
-                <phone:LongListSelector x:Name="ServicesList" 
+  <Grid x:Name="LayoutRoot"
+        Background="Transparent">
+    <!--Pivot Control-->
+    <phone:Pivot SelectionChanged="Pivot_OnSelectionChanged">
+      <phone:Pivot.HeaderTemplate>
+        <DataTemplate>
+          <TextBlock Text="{Binding}"
+                     FontSize="40" />
+        </DataTemplate>
+      </phone:Pivot.HeaderTemplate>
+      <!--Pivot item one-->
+      <phone:PivotItem Header="Services">
+        <phone:LongListSelector x:Name="ServicesList"
                                 JumpListStyle="{StaticResource AddrBookJumpListStyle}"
                                 ItemTemplate="{StaticResource AddrBookItemTemplate}"
                                 GroupHeaderTemplate="{StaticResource AddrBookGroupHeaderTemplate}"
                                 LayoutMode="List"
-                                HideEmptyGroups ="true"
-                                />
+                                HideEmptyGroups="true" />
         <!--IsGroupingEnabled="True"-->
-            </phone:PivotItem>
-            <!--Pivot item two-->
-            <phone:PivotItem Header="Map">
-                <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,12,12,12">
-                    <maps:Map x:Name="ServicesMap" Loaded="ServiceMap_Loaded" />
-                </Grid>
-            </phone:PivotItem>
-        </phone:Pivot>
-    </Grid>
-
-
+      </phone:PivotItem>
+      <!--Pivot item two-->
+      <phone:PivotItem Header="Map">
+        <Grid x:Name="ContentPanel"
+              Margin="12,12,12,12">
+          <maps:Map x:Name="ServicesMap"
+                    Loaded="ServiceMap_Loaded" />
+        </Grid>
+      </phone:PivotItem>
+    </phone:Pivot>
+  </Grid>
 </phone:PhoneApplicationPage>
